@@ -82,7 +82,7 @@
   "version": "0.0.3",
   "description": "",
   "author": "Markus Mrugalla <m.mrugalla@plan-net.com>",
-  "main": "./dist/app.js",
+  "main": "./src/index.js",
   "engines": {
       "node": "*"
   }
