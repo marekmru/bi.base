@@ -90,7 +90,7 @@
   "version": "0.0.2",
   "description": "",
   "author": "Markus Mrugalla <m.mrugalla@plan-net.com>",
-  "main": "./dist/index",
+  "main": "./src/index",
   "engines": {
       "node": "*"
   }
