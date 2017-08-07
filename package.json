@@ -85,5 +85,13 @@
     "extends": [
       "xo-space/esnext"
     ]
+  },
+  "name": "pnbi.base.alpha",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Markus Mrugalla <m.mrugalla@plan-net.com>",
+  "main": "./dist/index",
+  "engines": {
+      "node": "*"
   }
 }
