@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <title>CORE</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body ng-app="bi.base" ng-strict-di="" ng-cloak="">
+
+  <navbar></navbar>
+  <ui-view></ui-view>
+
+
+  <script>
+    window.BIAUTHBASE = "<!--# echo var='core_api' default='' -->";
+    window.BIAPIBASE = "<!--# echo var='core_api' default='' -->";
+  </script>
+</body>
+
+</html>

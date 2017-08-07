@@ -1,0 +1,34 @@
+<div layout="column" layout-align="center center" layout-fill="layout-fill" id="login">
+  <div class="login-box md-whiteframe-z2" layout="column">
+    <form name="form" novalidate ng-submit="$ctrl.submit($event)">
+      <md-content class="md-padding" layout="column" ng-if="$ctrl.success.message == undefined">
+        <h2>
+          Passwort zurücksetzen
+        </h2>
+        <md-input-container>
+          <label>Ihre Email Adresse</label>
+          <input type="email" ng-model="$ctrl.user.email" name="email" ng-pattern="/^.+@.+\..+$/" required ng-minlength="5">
+
+          <div ng-messages="form.email.$error" role="alert" ng-if="form.email.$dirty">
+            <div ng-message="required">Geben Sie eine Email Adresse ein.</div>
+            <div ng-message="email">Geben Sie eine valide Email Adresse ein.</div>
+            <div ng-message="minlength">Das Passwort muss aus mindestens 5 Zeichen bestehen.</div>
+          </div>
+          <div class="bi-alert md-block" ng-if="$ctrl.error" role="alert">
+            <span class="md-body-1">{{$ctrl.error}}</span>
+          </div>
+        </md-input-container>
+        <div layout="column">
+          <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid">ANFORDERN</md-button>
+        </div>
+        <br>
+        <md-button class="bi-reset-pw" ui-sref="login" md-no-ink> Zurück zum login</md-button>
+      </md-content>
+      <md-content ng-if="$ctrl.success.message" class="md-padding" layout="column" >
+        <p>$ctrl.success.message</p>
+        <md-button class="bi-reset-pw" ui-sref="login" md-no-ink> Zurück zum login</md-button>
+      </md-content>
+    </form>
+  </div>
+  <div class="bi-copyright"><span>&copy; 2017</span></div>
+</div>

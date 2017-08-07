@@ -1,0 +1,4 @@
+.tmp/
+coverage/
+xxxdist/
+node_modules/

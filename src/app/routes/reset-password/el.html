@@ -1,0 +1,41 @@
+<div layout="column" layout-align="center center" layout-fill="layout-fill" id="login">
+  <div class="login-box md-whiteframe-z2" layout="column">
+    <form name="form" novalidate ng-submit="$ctrl.submit($event)">
+      <md-content class="md-padding" layout="column">
+        <h2>
+          Neues Passwort
+        </h2>
+        <md-input-container class="md-block">
+          <label>Neues Passwort</label>
+          <input ng-model="$ctrl.user.password" name="password" type="password" required ng-minlength="3" ng-disabled="$ctrl.error">
+          <div ng-messages="form.password.$error" role="alert" ng-if="form.password.$dirty">
+            <div ng-message="required">Geben Sie ein neues Passwort ein.</div>
+            <div ng-message="minlength">Das Passwort muss aus mindestens 6 Zeichen bestehen.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Passwort wiederholen</label>
+          <input ng-model="$ctrl.confirmPassword" name="confirmPassword" type="password" required ng-disabled="$ctrl.error" ng-minlength="3"
+          compare-to="$ctrl.user.password">
+          <div ng-messages="form.confirmPassword.$error" role="alert" ng-if="form.confirmPassword.$dirty">
+            <div ng-message="required">Geben Sie ein neues Passwort ein.</div>
+            <div ng-message="minlength">Das Passwort muss aus mindestens 6 Zeichen bestehen.</div>
+            <div ng-message="compareTo">Die Passwörter müssen übereinstimmen.</div>
+
+          </div>
+          <br>
+          <div class="c-alert md-block" ng-if="$ctrl.error">
+            <span class="md-body-2">{{$ctrl.error}}</span><br>
+            <a href="#" ui-sref="forgot-password">Create new token</a>
+          </div>
+        </md-input-container>
+
+        <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid || $ctrl.error">Weiter
+        </md-button>
+        <!---->
+      </md-content>
+
+    </form>
+  </div>
+  <div class="bi-copyright"><span>&copy; 2017</span></div>
+</div>

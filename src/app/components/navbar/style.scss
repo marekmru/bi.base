@@ -1,0 +1,125 @@
+md-toolbar.bi-navbar {
+  min-height: 52px;
+  height: 52px;
+}
+
+.bi-navbar {
+  margin-bottom: 0;
+
+  .left,
+  .right {
+    min-width: 200px;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .bc-title {
+    text-align: center;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -1px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+}
+
+md-backdrop {
+  &.md-opaque {
+    background-color: transparent;
+  }
+}
+
+.md-sidenav-left {
+  &,
+  &.md-closed.md-locked-open-add-active,
+  &.md-locked-open {
+    min-width: 200px !important;
+    width: 85vw !important;
+    max-width: 260px !important;
+  }
+
+  [disabled] {
+    cursor: no-drop;
+  }
+
+  .bc-sidenav-header {
+    background-color: #969696;
+    color: #fff;
+    margin-bottom: 30px;
+    padding: 36px 0;
+
+    .bc-user {
+      padding: 0;
+
+      .md-button {
+        min-width: 78px;
+      }
+    }
+
+    .bc-user-name {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .bc-user-mail {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+  }
+
+  .bc-title-line {
+    padding: 30px 0 15px 30px;
+    text-transform: initial;
+    font-size: 14px;
+  }
+
+  .md-button {
+    &.nav-button {
+      padding: 13px 0 13px 30px;
+      margin: 0;
+      text-align: left;
+      text-transform: none;
+      display: block;
+
+      &.bc-sidenav-child {
+        padding-left: 78px;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: rgba(0,0,0,0.5);
+
+        &:hover {
+          color: rgb(0,0,0);
+        }
+        font-size: 12px;
+      }
+
+      &.nav-active {
+        pointer-events: none;
+        background-color: #969696;
+        color: white;
+
+        md-icon {
+          color: inherit;
+        }
+      }
+    }
+
+    md-icon {
+      margin-right: 20px;
+    }
+
+    &.bc-invalid {
+      &:after {
+        background-color: #D70F14;
+        content: '';
+        height: 20px;
+        margin-top: 8px;
+        position: absolute;
+        right: 20px;
+        width: 2px;
+      }
+    }
+  }
+}

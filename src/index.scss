@@ -1,0 +1,140 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800,700italic,400italic);
+@import url(//fonts.googleapis.com/icon?family=Material+Icons); // Rules for sizing the icon.
+/* apply a natural box layout model to all elements, but allowing components to change */
+/* Variables */
+$light-gray: #e1e1e1;
+$Rot: #D70F14;
+$Blau: #0A7DB4;
+$Grün: #64A505;
+$Orange: #DC7300;
+$Magenta: #C30050;
+$Grau: #6c6c6c;
+$Dunkelrot: #7D0B0E;
+$Dunkelblau: #05415A;
+$Dunkelgrün: #325005;
+$Dunkelorange: #A03C00;
+$Dunkelmagenta: #640028;
+$Dunkelgrau: #434343;
+$Hellrot: #FF3E47;
+$Hellblau: #2CD5E6;
+$Hellgrün: #A0CB0E;
+$Hellorange: #FF8500;
+$Hellmagenta: #F00B69;
+$Hellgrau: #969696;
+$gray: #969696;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+//chrome yellow input background
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px rgb(250,250,250) inset !important;
+}
+
+.bc-title-screen {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  text-transform: uppercase;
+}
+
+body,
+button,
+div,
+html,
+input,
+p,
+select,
+span,
+textarea {
+  font-family: 'Open Sans', serif !important;
+}
+
+body {
+  &:after {
+    content: attr(data-after);
+    font-weight: 800;
+    font-size: 15px;
+    position: fixed;
+    display: block;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    pointer-events: none;
+    color: rgba(0,0,0,.15);
+    letter-spacing: 0;
+    text-align: right;
+  }
+}
+
+.maintenance-mode,
+maintenance-mode {
+  height: 52px;
+  display: inline-block;
+  background-color: $Orange;
+  width: 100%;
+  position: absolute;
+  color: white;
+
+  md-icon {
+    color: white;
+  }
+
+  > div {
+    height: inherit;
+    position: relative;
+    width: 100%;
+  }
+
+  span {
+    font-weight: 800;
+  }
+
+  .md-button {
+    position: absolute;
+    right: 14px;
+    top: -6px;
+  }
+}
