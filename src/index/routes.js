@@ -1,6 +1,5 @@
 /** @ngInject */
-function authRoutes($stateProvider, $urlRouterProvider, $sceProvider) {
-  // $locationProvider.html5Mode(true).hashPrefix('!');
+export default function authRoutes($stateProvider, $urlRouterProvider, $sceProvider) {
   $stateProvider
     .state('login', {
       url: '/',
@@ -17,4 +16,3 @@ function authRoutes($stateProvider, $urlRouterProvider, $sceProvider) {
   $urlRouterProvider.otherwise('/');
   $sceProvider.enabled(false);
 }
-export default authRoutes;
