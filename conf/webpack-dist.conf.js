@@ -74,9 +74,9 @@ module.exports = {
   ],
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
-    filename: '[name].js',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    filename: '[name].js'
+  },
+  externals: {
   },
   entry: {
     app: `./${conf.path.src('index')}`,

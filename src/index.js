@@ -7,6 +7,8 @@ import './index.scss';
 
 import 'angular-sanitize';
 import 'angular-messages';
+import 'angular-animate';
+import 'angular-aria';
 
 import 'angular-material';
 import 'angular-material/angular-material.css';
@@ -238,6 +240,7 @@ export const app = 'bi.base';
 
 angular
   .module(app, [
+    'ngAria',
     'ngAnimate',
     'ngSanitize',
     'ngMessages',
