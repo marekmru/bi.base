@@ -17,7 +17,7 @@ export class NavbarBaseController {
     _$state = $state;
   }
   toggleMenu() {
-    _$mdSidenav('md-sidenav-left').toggle();
+    _$mdSidenav('md-sidenav#-left').toggle();
   }
   goMainRoute() {
     if (angular.isDefined(_BIAuthEnv.mainRoute.route) && angular.isDefined(_BIAuthEnv.mainRoute.param)) {

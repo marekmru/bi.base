@@ -79,7 +79,7 @@
     ]
   },
   "name": "bi.base",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "author": "Markus Mrugalla <m.mrugalla@plan-net.com>",
   "main": "./src/index.js",

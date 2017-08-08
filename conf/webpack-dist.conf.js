@@ -75,9 +75,17 @@ module.exports = {
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
     filename: '[name].js',
-    libraryTarget: 'CommonJS2'
+    libraryTarget: 'commonjs2'
   },
+  externals: {
+    angular: true,
+    'angular-ui-router': 'window["angular-ui-router"]',
+    'angular-sanitize': 'window["angular-sanitize"]',
+    'angular-animate': 'window["angular-animate"]',
+    'angular-aria': 'window["angular-aria"]',
+    'angular-messages': 'window["angular-messages"]'
 
+  },
   entry: {
     app: `./${conf.path.src('index')}`,
     vendor: Object.keys(pkg.dependencies)

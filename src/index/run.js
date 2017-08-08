@@ -8,7 +8,12 @@ function run(BIAuthEnv, $log, $state, $rootScope, BIEvents, $mdDialog, $window) 
 
   const unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, () => {
     $state.go('login');
-    $window.location.reload(true);
+    // $window.location.reload(true);
+    $state.go('login', null, {
+      notify: false
+    }).then(() => {
+      $window.location.reload();
+    });
   });
   $state.defaultErrorHandler(() => {});
 
