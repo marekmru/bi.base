@@ -75,7 +75,7 @@ module.exports = {
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
     filename: '[name].js',
-    libraryTarget: 'umd'
+    libraryTarget: 'CommonJS2'
   },
 
   entry: {
