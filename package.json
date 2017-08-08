@@ -1,12 +1,12 @@
 {
   "dependencies": {
     "angular": "^1.6.4",
-    "angular-ui-router": "^1.0.3",
+    "angular-animate": "^1.6.4",
     "angular-aria": "^1.6.4",
     "angular-material": "^1.1.4",
     "angular-messages": "^1.6.4",
-    "angular-animate": "^1.6.4",
-    "angular-sanitize": "^1.6.4"
+    "angular-sanitize": "^1.6.4",
+    "angular-ui-router": "^1.0.3"
   },
   "devDependencies": {
     "@types/angular": "^1.6.10",
@@ -79,7 +79,7 @@
     ]
   },
   "name": "bi.base",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "",
   "author": "Markus Mrugalla <m.mrugalla@plan-net.com>",
   "main": "./dist/app.js",

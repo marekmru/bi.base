@@ -1,13 +1,10 @@
 export class BIAuthService {
   /** @ngInject */
-  // eslint-disable-next-line
   constructor(BIAuthEnv, $q, $http) {
     this.BIAuthEnv = BIAuthEnv;
     this.$http = $http;
     this.$q = $q;
-    // Const url = 'https://bi.plan-net.com/api/v2';
-    const url = BIAuthEnv.basePath;
-    // BIAuthEnv.basePath
+    const url = BIAuthEnv.authPath;
     this.EP = {
       login: `${url}/login2`,
       logout: `${url}/logout`,

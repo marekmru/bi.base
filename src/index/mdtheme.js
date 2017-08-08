@@ -17,6 +17,7 @@ function mdtheme($mdThemingProvider) {
     A200: '#ffb3b4',
     A400: '#ff8081',
     A700: '#ff6768',
+    A900: '#000000',
     contrastDefaultColor: 'light',
     contrastDarkColors: [
       '50',
@@ -26,7 +27,8 @@ function mdtheme($mdThemingProvider) {
       'A100',
       'A200',
       'A400',
-      'A700'
+      'A700',
+      'A900'
     ],
     contrastLightColors: [
       '400',
@@ -41,39 +43,21 @@ function mdtheme($mdThemingProvider) {
     .definePalette('customPrimary',
       customPrimary2);
 
-  const customAccent = {
-    50: '#000000',
-    100: '#000000',
-    200: '#050d0e',
-    300: '#0c1d20',
-    400: '#142e32',
-    500: '#1b3f45',
-    600: '#296169',
-    700: '#30727c',
-    800: '#37838e',
-    900: '#3f93a0',
-    A100: '#296169',
-    A200: '#225057',
-    A400: '#1b3f45',
-    A700: '#46a4b3',
-    contrastDefaultColor: 'light'
-  };
-
-  /* Const customAccent2 = {
-    50: '#efeaff',
-    100: '#d8caff',
-    200: '#bea6ff',
-    300: '#a382ff',
-    400: '#9068ff',
+  const customAccent2 = {
+    50: '#ffffff',
+    100: '#ffffff',
+    200: '#ded2ff',
+    300: '#a98aff',
+    400: '#926cff',
     500: '#7c4dff',
-    600: '#7446ff',
-    700: '#693dff',
-    800: '#5f34ff',
-    900: '#4c25ff',
+    600: '#633ECC',
+    700: '#442A8C',
+    800: '#25174D',
+    900: '#000000',
     A100: '#ffffff',
-    A200: '#ffffff',
-    A400: '#dad3ff',
-    A700: '#c4b9ff',
+    A200: '#ede6ff',
+    A400: '#a280ff',
+    A700: '#8f66ff',
     contrastDefaultColor: 'light',
     contrastDarkColors: [
       '50',
@@ -93,37 +77,59 @@ function mdtheme($mdThemingProvider) {
       '800',
       '900'
     ]
-  }; */
+  };
 
   $mdThemingProvider
     .definePalette('customAccent',
-      customAccent);
+      customAccent2);
 
   const customWarn = {
-    50: '#ffb280',
-    100: '#ffa266',
-    200: '#ff934d',
-    300: '#ff8333',
-    400: '#ff741a',
-    500: '#ff6400',
-    600: '#e65a00',
-    700: '#cc5000',
-    800: '#b34600',
-    900: '#993c00',
-    A100: '#ffc199',
-    A200: '#ffd1b3',
-    A400: '#ffe0cc',
-    A700: '#803200'
+    50: '#fefaf3',
+    100: '#f9daab',
+    200: '#f6c377',
+    300: '#f1a534',
+    400: '#ef9918',
+    500: '#d9880f',
+    600: '#bc760d',
+    700: '#a0640b',
+    800: '#835209',
+    900: '#674007',
+    A100: '#fff6e8',
+    A200: '#ffcd82',
+    A400: '#ffa41c',
+    A700: '#f5980d',
+    contrastDefaultColor: 'light',
+    contrastDarkColors: [
+      '50',
+      '100',
+      '200',
+      '300',
+      '400',
+      '500',
+      'A100',
+      'A200',
+      'A400',
+      'A700'
+    ],
+    contrastLightColors: [
+      '600',
+      '700',
+      '800',
+      '900'
+    ]
   };
+
   $mdThemingProvider
     .definePalette('customWarn',
       customWarn);
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('customPrimary')
+    .primaryPalette('customPrimary', {
+
+    })
     .accentPalette('customAccent', {
       default: '500',
-      'hue-1': '50'
+      'hue-1': '900'
     })
     .warnPalette('customWarn');
 }

@@ -65,10 +65,10 @@ html {
   color: rgba(255, 255, 255, 0.3);
 }
 //chrome yellow input background
-
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px rgb(250,250,250) inset !important;
-}
+/*input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px rgba(255,255,255, 0) inset !important;
+}*/
+/* Change Autocomplete styles in Chrome*/
 
 .bc-title-screen {
   display: block;

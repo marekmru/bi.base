@@ -33,6 +33,7 @@ import {
 /** @ngInject */
 function biAuthEnv() {
   const _config = {
+    authPath: 'https://bi.plan-net.com/api/v2',
     basePath: 'http://localhost:5050',
     noAuthRoutes: ['login', 'forgot-password', 'reset-password'],
     mainRoute: undefined,
@@ -117,6 +118,30 @@ function maintenanceMode() {
     scope: false
   };
 }
+/** @ngInject */
+function appTitle(BIAuthEnv) {
+  // eslint-disable-next-line
+  const link = (scope, el) => {
+    const title = BIAuthEnv.title;
+    const le = title.length;
+    if (le <= 8) {
+      el[0].classList.add('size-xl');
+    } else if (le <= 13) {
+      el[0].classList.add('size-l');
+    } else {
+      el[0].classList.add('size-m');
+    }
+    el[0].innerText = title;
+    // Scope.$on('$destroy', () => {});
+  };
+
+  return {
+    restrict: 'A',
+    link,
+    scope: false
+  };
+}
+
 /** @ngInject */
 function compareTo() {
   /*
@@ -233,6 +258,7 @@ angular
     MAINTENANCE: 'bi.maintenence'
   })
   .directive('compareTo', compareTo)
+  .directive('appTitle', appTitle)
   .directive('maintenanceMode', maintenanceMode)
   .directive('poweredBy', poweredBy)
   .directive('required', requiredDirective)
