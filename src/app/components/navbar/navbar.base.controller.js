@@ -1,11 +1,11 @@
+import './style.scss';
 let _$mdSidenav;
 let _unwatch;
 let _$transitions;
 let _BIAuthEnv;
 let _BIAuthService;
 let _$state;
-import './style.scss';
-export class NavbarBaseController {
+export default class NavbarBaseController {
   /** @ngInject */
   // eslint-disable-next-line
   constructor($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $state) {
