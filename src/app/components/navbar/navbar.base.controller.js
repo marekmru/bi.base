@@ -6,7 +6,7 @@ let _$transitions;
 let _BIAuthEnv;
 let _BIAuthService;
 let _$state;
-export default class NavbarBaseController {
+export class NavbarBaseController {
   /** @ngInject */
   // eslint-disable-next-line
   constructor($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $state) {

@@ -74,10 +74,10 @@ module.exports = {
   ],
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
-    filename: '[name].js'
+    filename: '[name].js',
+    libraryTarget: 'umd'
   },
-  externals: {
-  },
+
   entry: {
     app: `./${conf.path.src('index')}`,
     vendor: Object.keys(pkg.dependencies)
