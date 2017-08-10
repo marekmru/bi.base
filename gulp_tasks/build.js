@@ -14,19 +14,27 @@ const ngAnnotate = require('gulp-ng-annotate');
 
 const conf = require('../conf/gulp.conf');
 
-gulp.task('build', build);
+gulp.task('build2', build);
 
 function build() {
-  const partialsInjectFile = gulp.src(conf.path.tmp('templateCacheHtml.js'), {read: false});
+  const partialsInjectFile = gulp.src(conf.path.tmp('templateCacheHtml2.js'), {
+    read: false
+  });
   const partialsInjectOptions = {
     starttag: '<!-- inject:partials -->',
     ignorePath: conf.paths.tmp,
     addRootSlash: false
   };
 
-  const htmlFilter = filter(conf.path.tmp('*.html'), {restore: true});
-  const jsFilter = filter(conf.path.tmp('**/*.js'), {restore: true});
-  const cssFilter = filter(conf.path.tmp('**/*.css'), {restore: true});
+  const htmlFilter = filter(conf.path.tmp('*.html'), {
+    restore: true
+  });
+  const jsFilter = filter(conf.path.tmp('**/*.js'), {
+    restore: true
+  });
+  const cssFilter = filter(conf.path.tmp('**/*.css'), {
+    restore: true
+  });
 
   return gulp.src(conf.path.tmp('/index.html'))
     .pipe(inject(partialsInjectFile, partialsInjectOptions))
@@ -38,10 +46,10 @@ function build() {
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
     .pipe(cssnano())
-  //  .pipe(rev())
+    // .pipe(rev())
     .pipe(cssFilter.restore)
     .pipe(revReplace())
-    .pipe(sourcemaps.write('maps'))
+    // .pipe(sourcemaps.write('maps'))
     .pipe(htmlFilter)
     .pipe(htmlmin())
     .pipe(htmlFilter.restore)

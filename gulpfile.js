@@ -11,12 +11,12 @@ const hub = new HubRegistry([conf.path.tasks('*.js')]);
 gulp.registry(hub);
 
 gulp.task('inject', gulp.series(gulp.parallel('styles', 'scripts'), 'inject'));
-gulp.task('build', gulp.series('partials', gulp.parallel('inject', 'other'), 'build', 'move'));
+gulp.task('build', gulp.series('partials', gulp.parallel('inject', 'other'), 'build2', 'move'));
 gulp.task('test', gulp.series('scripts', 'karma:single-run'));
 gulp.task('test:auto', gulp.series('watch', 'karma:auto-run'));
 gulp.task('serve', gulp.series('inject', 'watch', 'browsersync'));
 gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
-gulp.task('default', gulp.series('clean', 'build'));
+gulp.task('default', gulp.series('clean', 'build2'));
 gulp.task('watch', watch);
 
 function reloadBrowserSync(cb) {

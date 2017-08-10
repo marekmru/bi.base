@@ -4,14 +4,14 @@ const angularTemplatecache = require('gulp-angular-templatecache');
 
 const conf = require('../conf/gulp.conf');
 
-gulp.task('partials', partials);
+gulp.task('partials', partials2);
 
-function partials() {
+function partials2() {
   return gulp.src(conf.path.src('app/**/*.html'))
     .pipe(htmlmin(conf.htmlmin))
-    .pipe(angularTemplatecache('templateCacheHtml.js', {
-      module: conf.ngModule,
-      root: 'app'
+    .pipe(angularTemplatecache('templateCacheHtml2.js', {
+      module: 'bi.base',
+      root: './app'
     }))
     .pipe(gulp.dest(conf.path.tmp()));
 }
