@@ -1,85 +1,86 @@
-export class BIAuthService {
-  /** @ngInject */
-  constructor(BIAuthEnv, $q, $http) {
-    this.BIAuthEnv = BIAuthEnv;
-    this.$http = $http;
-    this.$q = $q;
-    const url = BIAuthEnv.authPath;
-    this.EP = {
-      login: `${url}/login2`,
-      logout: `${url}/logout`,
-      reset: `${url}/reset`,
-      profile: `${url}/profile`,
-      info: `${url}/info`
-    };
-    this._user = {
-      isAuthenticated: false
-    };
-  }
+angular
+  .module('bi.base')
+  .service('BIAuthService', fn);
 
-  _getMessage(object) {
+/** @ngInject */
+function fn(BIAuthEnv, $q, $http) {
+  this.BIAuthEnv = BIAuthEnv;
+  this.$http = $http;
+  this.$q = $q;
+  var url = BIAuthEnv.authPath;
+  this.EP = {
+    login: url + '/login2',
+    logout: url + '/logout',
+    reset: url + '/reset',
+    profile: url + '/profile',
+    info: url + '/info'
+  };
+  this._user = {
+    isAuthenticated: false
+  };
+  this._getMessage = function (object) {
     if (Object.prototype.hasOwnProperty.call(object, 'message')) {
       return object;
     }
-    for (let i = 0; i < Object.keys(object).length; i++) {
+    for (var i = 0; i < Object.keys(object).length; i++) {
       if (angular.isObject(object[Object.keys(object)[i]])) {
-        const o = this._getMessage(object[Object.keys(object)[i]]);
+        var o = this._getMessage(object[Object.keys(object)[i]]);
         if (o !== null) {
           return o;
         }
       }
     }
     return null;
-  }
-  handleError(response) {
-    const message = this._getMessage(response).message;
+  };
+  this.handleError = function (response) {
+    var message = this._getMessage(response).message;
     if (message === null) {
       return this.$q.reject(this.BIAuthEnv.unknown);
     }
     return this.$q.reject(message);
-  }
+  };
 
-  handleSuccess(response) {
+  this.handleSuccess = function (response) {
     return response.data.result;
-  }
+  };
 
-  info() {
+  this.info = function () {
     return this.$http({
       method: 'GET',
       url: this.EP.info
     }).then(this.handleSuccess, this.handleError);
-  }
+  };
 
-  reset(data) {
+  this.reset = function (data) {
     if (angular.isDefined(data.password_code)) {
       return this.$http({
         method: 'POST',
-        data,
+        data: data,
         url: this.EP.reset
       }).then(this.handleSuccess, this.handleError);
     }
     return this.$http({
       method: 'GET',
-      url: `${this.EP.reset}?email=${data.email}`
+      url: this.EP.reset + '?email=' + data.email
     }).then(this.handleSuccess, this.handleError);
-  }
+  };
 
-  profile(force) {
+  this.profile = function (force) {
     if (this._user.isAuthenticated && !force) {
       return this.$q.when(this._user);
     }
     return this.$http({
       method: 'GET',
       url: this.EP.profile
-    }).then(data => {
+    }).then(function (data) {
       this._user = angular.extend(data.data.result, {
         isAuthenticated: true
       });
       return this._user;
     }, this.handleError);
-  }
+  };
 
-  logout() {
+  this.logout = function () {
     this._user = {
       isAuthenticated: false
     };
@@ -87,13 +88,15 @@ export class BIAuthService {
       method: 'GET',
       url: this.EP.logout
     }).then(this.handleSuccess, this.handleError);
-  }
+  };
 
-  login(userData) {
+  this.login = function (userData) {
     return this.$http({
       method: 'POST',
       url: this.EP.login,
       data: userData
-    }).then(() => this.profile(true), this.handleError);
-  }
+    }).then(function () {
+      return this.profile(true);
+    }, this.handleError);
+  };
 }

@@ -1,27 +1,23 @@
-let _BIAuthService;
-let _$state;
-export const ResetPasswordComponent = {
-  template: require('./el.html'),
-  controller: class {
-    /** @ngInject */
-    constructor(BIAuthService, $stateParams, $state) {
-      _BIAuthService = BIAuthService;
-      _$state = $state;
-      /* eslint-disable camelcase */
-      this.user = {
-        password_code: $stateParams.code,
-        password: undefined
-      };
-      /* eslint-enable camelcase */
-    }
+angular
+  .module('bi.base')
+  .component('resetPasswordComponent', {
+    templateUrl: './app/routes/reset-password/el.html',
+    controller: ResetPasswordController
+  });
 
-    submit() {
-      _BIAuthService.reset(this.user).then(() => {
-        _$state.go('login');
-      }, error => {
-        this.error = error.message.password_code + '.';
-      });
-    }
-  }
-
-};
+/** @ngInject */
+function ResetPasswordController(BIAuthService, $state, $stateParams) {
+  var vm = this;
+  vm.user = {
+    // eslint-disable-next-line
+    password_code: $stateParams.code,
+    password: undefined
+  };
+  vm.submit = function () {
+    BIAuthService.reset(this.user).then(function () {
+      $state.go('login');
+    }, function (error) {
+      vm.error = error.message.password_code + '.';
+    });
+  };
+}

@@ -1,13 +1,8 @@
 module.exports = {
   extends: [
-    "angular"
+    'angular'
   ],
   rules: {
-    "angular/no-service-method": 0,
-    "angular/log": 1,
-    "no-compare-neg-zero": 0
-  },
-  globals: {
-    "window": true
+    'angular/no-service-method': 0
   }
-};
+}

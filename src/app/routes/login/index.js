@@ -1,43 +1,38 @@
-import './style.scss';
-let _$state;
-let _BIAuthService;
-let _BIAuthEnv;
-export const LoginComponent = {
-  template: require('./el.html'),
-  controller: class {
-    /** @ngInject */
-    constructor($state, BIAuthService, BIAuthEnv) {
-      _$state = $state;
-      _BIAuthService = BIAuthService;
-      _BIAuthEnv = BIAuthEnv;
-    }
+angular
+  .module('bi.base')
+  .component('loginComponent', {
+    templateUrl: './app/routes/login/el.html',
+    controller: LoginController
+  });
 
-    _goMainRoute() {
-      if (angular.isDefined(_BIAuthEnv.mainRoute.route) && angular.isDefined(_BIAuthEnv.mainRoute.param)) {
-        _$state.go(_BIAuthEnv.mainRoute.route, _BIAuthEnv.mainRoute.param);
-      } else {
-        _$state.go(_BIAuthEnv.mainRoute);
-      }
-    }
-    submit() {
-      _BIAuthService.login(this.user).then(() => {
-        this._goMainRoute();
-      },
-      data => {
-        this.error = angular.isString(data) ? data : true;
-      }
-      );
-    }
-    $onInit() {
-      angular.extend(this, {
-        error: undefined,
-        user: {
-          username: null,
-          password: null
-        }
-      });
-    }
+/** @ngInject */
+function LoginController($state, BIAuthService, BIAuthEnv) {
+  var vm = this;
 
-    $onDestroy() {}
-  }
-};
+  vm._goMainRoute = function () {
+    if (angular.isDefined(BIAuthEnv.mainRoute.route) && angular.isDefined(BIAuthEnv.mainRoute.param)) {
+      $state.go(BIAuthEnv.mainRoute.route, BIAuthEnv.mainRoute.param);
+    } else {
+      $state.go(BIAuthEnv.mainRoute);
+    }
+  };
+  vm.submit = function () {
+    BIAuthService.login(vm.user).then(vm._goMainRoute,
+      function (data) {
+        vm.error = angular.isString(data) ? data : true;
+      }
+    );
+  };
+  vm.$onInit = function () {
+    BIAuthService.profile().then(this._goMainRoute);
+    angular.extend(this, {
+      error: undefined,
+      user: {
+        username: null,
+        password: null
+      }
+    });
+  };
+
+  // vm.$onDestroy = function () {};
+}

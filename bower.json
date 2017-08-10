@@ -1,0 +1,16 @@
+{
+  "name": "fountain-inject",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "*",
+      "angular-material": "*",
+      "angular-aria": "*",
+      "angular-animate": "*",
+      "angular-sanitize": "*",
+      "angular-messages": "*",
+      "angular-ui-router":  "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.2"
+  }
+}

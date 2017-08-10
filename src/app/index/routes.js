@@ -1,11 +1,14 @@
+angular
+  .module('bi.base')
+  .config(routes);
+
 /** @ngInject */
-export default function authRoutes($stateProvider, $urlRouterProvider, $sceProvider) {
+function routes($stateProvider, $urlRouterProvider, $sceProvider) {
   $stateProvider
     .state('login', {
       url: '/',
       component: 'loginComponent'
-    })
-    .state('forgot-password', {
+    }).state('forgot-password', {
       url: '/forgot-password',
       component: 'forgotPasswordComponent'
     })

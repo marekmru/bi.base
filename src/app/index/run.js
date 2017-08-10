@@ -1,24 +1,24 @@
-export default run;
-/* eslint max-params: ["error", 10] */
+angular
+  .module('bi.base')
+  .run(run);
+
 /** @ngInject */
 function run(BIAuthEnv, $log, $state, $rootScope, BIEvents, $mdDialog, $window) {
   if (angular.isUndefined(BIAuthEnv.mainRoute)) {
     $log.error('Please define the main route of the application in index/config.js !!!');
   }
 
-  const unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, () => {
+  var unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, function () {
     $state.go('login');
     // $window.location.reload(true);
     $state.go('login', null, {
       notify: false
-    }).then(() => {
-      $window.location.reload();
-    });
+    }).then($window.location.reload);
   });
-  $state.defaultErrorHandler(() => {});
+  $state.defaultErrorHandler(function () {});
 
-  const showAlert = error => {
-    let bcAlert = $mdDialog.alert({
+  var showAlert = function (error) {
+    var bcAlert = $mdDialog.alert({
       clickOutsideToClose: true,
       escapeToClose: true,
       title: 'Fehler',
@@ -27,16 +27,16 @@ function run(BIAuthEnv, $log, $state, $rootScope, BIEvents, $mdDialog, $window) 
     });
     $mdDialog
       .show(bcAlert)
-      .finally(() => {
+      .finally(function () {
         bcAlert = undefined;
       });
   };
   // Handle response error golbally
-  const unwatch2 = $rootScope.$on(BIEvents.ERROR, (event, error) => {
+  var unwatch2 = $rootScope.$on(BIEvents.ERROR, function (event, error) {
     showAlert(error);
   });
 
-  $rootScope.$on('$destroy', () => {
+  $rootScope.$on('$destroy', function () {
     unwatch1();
     unwatch2();
   }); // Remove state rejection errors

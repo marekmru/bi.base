@@ -1,8 +1,10 @@
-export default mdtheme;
+angular
+  .module('bi.base')
+  .config(mdtheme);
 
 /** @ngInject */
 function mdtheme($mdThemingProvider) {
-  const customPrimary2 = {
+  var customPrimary2 = {
     50: '#fae2e3',
     100: '#f3b7b9',
     200: '#eb878a',
@@ -43,7 +45,7 @@ function mdtheme($mdThemingProvider) {
     .definePalette('customPrimary',
       customPrimary2);
 
-  const customAccent2 = {
+  var customAccent2 = {
     50: '#ffffff',
     100: '#ffffff',
     200: '#ded2ff',
@@ -83,7 +85,7 @@ function mdtheme($mdThemingProvider) {
     .definePalette('customAccent',
       customAccent2);
 
-  const customWarn = {
+  var customWarn = {
     50: '#fefaf3',
     100: '#f9daab',
     200: '#f6c377',
