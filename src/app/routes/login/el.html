@@ -19,7 +19,7 @@
           <div ng-messages="form.password.$error" role="alert" ng-show="form.password.$dirty">
             <div ng-message="required">Geben Sie ein Passwort ein.</div>
             <div ng-message="minlength">Das Passwort muss aus mindestens 3 Zeichen bestehen.</div>
-          </div>
+          </divs>
 
           <div class="bi-alert md-block" ng-if="$ctrl.error" role="alert">
             <span class="md-body-1" md-colors="{color: 'warn-500'}">Bitte überprüfen Sie ihren Namen und das Passwort.</span>
@@ -35,4 +35,5 @@
     </form>
   </div>
   <div class="bi-copyright"><span>&copy; 2017</span></div>
+  <pre>{{$ctrl}}</pre>
 </div>
