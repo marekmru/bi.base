@@ -33,7 +33,7 @@ function build() {
     .pipe(useref())
     .pipe(jsFilter)
     .pipe(ngAnnotate())
-    // .pipe(uglify({preserveComments: uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
+    .pipe(uglify({preserveComments: uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
     // .pipe(rev())
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
