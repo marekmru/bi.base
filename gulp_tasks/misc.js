@@ -8,6 +8,7 @@ const conf = require('../conf/gulp.conf');
 
 gulp.task('clean', clean);
 gulp.task('other', other);
+gulp.task('move', move);
 
 function clean() {
   return del([conf.paths.dist, conf.paths.tmp]);
@@ -22,4 +23,11 @@ function other() {
   ])
     .pipe(fileFilter)
     .pipe(gulp.dest(conf.paths.dist));
+}
+
+function move() {
+  const fileFilter = filter(file => file.stat.isFile());
+  return gulp.src('src/assets/**.*')
+    .pipe(fileFilter)
+    .pipe(gulp.dest(conf.paths.dist + '/assets'));
 }
