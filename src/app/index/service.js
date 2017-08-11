@@ -4,27 +4,24 @@ angular
 
 /** @ngInject */
 function BIAuthService(BIAuthEnv, $q, $http) {
-  this.BIAuthEnv = BIAuthEnv;
-  this.$http = $http;
-  this.$q = $q;
   var url = BIAuthEnv.authPath;
-  this.EP = {
+  var EP = {
     login: url + '/login2',
     logout: url + '/logout',
     reset: url + '/reset',
     profile: url + '/profile',
     info: url + '/info'
   };
-  this._user = {
+  var _user = {
     isAuthenticated: false
   };
-  this._getMessage = function (object) {
+  var _getMessage = function (object) {
     if (Object.prototype.hasOwnProperty.call(object, 'message')) {
       return object;
     }
     for (var i = 0; i < Object.keys(object).length; i++) {
       if (angular.isObject(object[Object.keys(object)[i]])) {
-        var o = this._getMessage(object[Object.keys(object)[i]]);
+        var o = _getMessage(object[Object.keys(object)[i]]);
         if (o !== null) {
           return o;
         }
@@ -32,71 +29,73 @@ function BIAuthService(BIAuthEnv, $q, $http) {
     }
     return null;
   };
-  this.handleError = function (response) {
-    var message = this._getMessage(response).message;
+  var handleError = function (response) {
+    var message = _getMessage(response).message;
     if (message === null) {
-      return this.$q.reject(this.BIAuthEnv.unknown);
+      return $q.reject(this.BIAuthEnv.unknown);
     }
-    return this.$q.reject(message);
+    return $q.reject(message);
   };
 
-  this.handleSuccess = function (response) {
+  var handleSuccess = function (response) {
     return response.data.result;
   };
 
   this.info = function () {
-    return this.$http({
+    return $http({
       method: 'GET',
-      url: this.EP.info
-    }).then(this.handleSuccess, this.handleError);
+      url: EP.info
+    }).then(handleSuccess, handleError);
   };
 
   this.reset = function (data) {
     if (angular.isDefined(data.password_code)) {
-      return this.$http({
+      return $http({
         method: 'POST',
         data: data,
-        url: this.EP.reset
-      }).then(this.handleSuccess, this.handleError);
+        url: EP.reset
+      }).then(handleSuccess, handleError);
     }
-    return this.$http({
+    return $http({
       method: 'GET',
-      url: this.EP.reset + '?email=' + data.email
-    }).then(this.handleSuccess, this.handleError);
+      url: EP.reset + '?email=' + data.email
+    }).then(handleSuccess, handleError);
   };
 
   this.profile = function (force) {
-    if (this._user.isAuthenticated && !force) {
-      return this.$q.when(this._user);
+    // eslint-disable-next-line
+    console.log('lg2');
+    if (_user.isAuthenticated && !force) {
+      return $q.when(_user);
     }
-    return this.$http({
+    return $http({
       method: 'GET',
-      url: this.EP.profile
+      url: EP.profile
     }).then(function (data) {
-      this._user = angular.extend(data.data.result, {
+      _user = angular.extend(data.data.result, {
         isAuthenticated: true
       });
-      return this._user;
-    }, this.handleError);
+      return _user;
+    }, handleError);
   };
 
   this.logout = function () {
-    this._user = {
+    _user = {
       isAuthenticated: false
     };
-    return this.$http({
+    return $http({
       method: 'GET',
-      url: this.EP.logout
-    }).then(this.handleSuccess, this.handleError);
+      url: EP.logout
+    }).then(handleSuccess, handleError);
   };
 
   this.login = function (userData) {
-    return this.$http({
+    return $http({
       method: 'POST',
-      url: this.EP.login,
+      url: EP.login,
       data: userData
     }).then(function () {
       return this.profile(true);
-    }, this.handleError);
+    }.bind(this), handleError);
   };
 }

@@ -113,7 +113,7 @@ var isChrome = function () {
 
 angular
   .module('bi.base')
-  .directive('requiredDirective', fn5);
+  .directive('requiredDisabled', fn5);
 
 /** @ngInject */
 function fn5($interval) {
@@ -127,14 +127,6 @@ function fn5($interval) {
     if (angular.isUndefined(ngModel)) {
       return;
     }
-    var timer = $interval(function () {
-      tries++;
-      if (tries > 5) {
-        $interval.cancel(timer);
-      }
-      ngModel.$validate();
-    }, 100);
-
     var validator = function (modelValue, viewValue) {
       if (isChrome() && el[0].matches('input[type=password]:-webkit-autofill')) {
         $interval.cancel(timer);
@@ -144,6 +136,14 @@ function fn5($interval) {
     };
     var tries = 0;
     var originalValidator = ngModel.$validators.required;
+    var timer = $interval(function () {
+      tries++;
+      if (tries > 5) {
+        $interval.cancel(timer);
+      }
+      ngModel.$validate();
+    }, 125);
+
     ngModel.$validators.required = validator;
     scope.$on('$destroy', function () {
       $interval.cancel(timer);

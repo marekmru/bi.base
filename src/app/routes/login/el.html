@@ -6,7 +6,7 @@
         <h2 class="bi-headline" app-title=""></h2>
         <md-input-container>
           <label>Nutzername</label>
-          <input type="text" ng-model="$ctrl.user.username" name="username" required="" ng-minlength="3" md-autofocus>
+          <input type="text" ng-model="$ctrl.user.username" name="username" required="" ng-minlength="3" md-autofocus required-disabled>
           <div ng-messages="form.username.$error" role="alert" ng-show="form.username.$dirty">
             <div ng-message="required">Geben Sie einen Namen ein.</div>
             <div ng-message="minlength">Der Name muss aus mindestens 3 Zeichen bestehen.</div>
@@ -14,7 +14,7 @@
         </md-input-container>
         <md-input-container>
           <label>Passwort</label>
-          <input ng-model="$ctrl.user.password" name="password" type="password" required="" ng-minlength="3">
+          <input ng-model="$ctrl.user.password" name="password" type="password" required="" ng-minlength="3"  required-disabled>
 
           <div ng-messages="form.password.$error" role="alert" ng-show="form.password.$dirty">
             <div ng-message="required">Geben Sie ein Passwort ein.</div>
@@ -35,5 +35,4 @@
     </form>
   </div>
   <div class="bi-copyright"><span>&copy; 2017</span></div>
-  <pre>{{$ctrl}}</pre>
 </div>

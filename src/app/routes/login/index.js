@@ -8,8 +8,7 @@ angular
 /** @ngInject */
 function LoginController($state, BIAuthService, BIAuthEnv) {
   var vm = this;
-
-  vm._goMainRoute = function () {
+  var goMainRoute = function () {
     if (angular.isDefined(BIAuthEnv.mainRoute.route) && angular.isDefined(BIAuthEnv.mainRoute.param)) {
       $state.go(BIAuthEnv.mainRoute.route, BIAuthEnv.mainRoute.param);
     } else {
@@ -17,15 +16,17 @@ function LoginController($state, BIAuthService, BIAuthEnv) {
     }
   };
   vm.submit = function () {
-    BIAuthService.login(vm.user).then(vm._goMainRoute,
+    BIAuthService.login(vm.user).then(function () {
+      goMainRoute();
+    },
       function (data) {
         vm.error = angular.isString(data) ? data : true;
       }
     );
   };
   vm.$onInit = function () {
-    BIAuthService.profile().then(this._goMainRoute);
-    angular.extend(this, {
+    BIAuthService.profile().then(goMainRoute);
+    angular.extend(vm, {
       error: undefined,
       user: {
         username: null,
