@@ -10,6 +10,7 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
   var vm = this;
   var _unwatch;
   var _unwatch2;
+  vm.hideLoader = true;
   vm.toggleMenu = function () {
     $mdSidenav('md-sidenav-left').toggle();
   };

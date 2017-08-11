@@ -63,8 +63,6 @@ function BIAuthService(BIAuthEnv, $q, $http) {
   };
 
   this.profile = function (force) {
-    // eslint-disable-next-line
-    console.log('lg2');
     if (_user.isAuthenticated && !force) {
       return $q.when(_user);
     }
