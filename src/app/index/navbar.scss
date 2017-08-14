@@ -27,7 +27,9 @@ md-toolbar.bi-navbar {
 
 md-backdrop {
   &.md-opaque {
-    background-color: transparent;
+      &.md-opaque {
+    background-color: rgba(0,0,0,0.1);
+  }
   }
 }
 
