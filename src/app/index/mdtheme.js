@@ -5,40 +5,40 @@ angular
 /** @ngInject */
 function mdtheme($mdThemingProvider) {
   var customPrimary2 = {
-    50: '#fae2e3',
-    100: '#f3b7b9',
-    200: '#eb878a',
-    300: '#e3575b',
-    400: '#dd3337',
-    500: '#d70f14',
-    600: '#d30d12',
-    700: '#cd0b0e',
-    800: '#c7080b',
-    900: '#be0406',
-    A100: '#ffe6e6',
-    A200: '#ffb3b4',
-    A400: '#ff8081',
-    A700: '#ff6768',
-    A900: '#000000',
+    50: 'fef1f1',
+    100: 'f9aaac',
+    200: 'f57578',
+    300: 'f13237',
+    400: 'ef161b',
+    500: 'd70f14',
+    600: 'ba0d11',
+    700: '9e0b0f',
+    800: '81090c',
+    900: '650709',
+    A100: 'ffe6e7',
+    A200: 'ff8083',
+    A400: 'ff1a20',
+    A700: 'f50b11',
+    A900: 'ffffff',
     contrastDefaultColor: 'light',
     contrastDarkColors: [
       '50',
       '100',
       '200',
-      '300',
       'A100',
-      'A200',
-      'A400',
-      'A700',
-      'A900'
+      'A200'
     ],
     contrastLightColors: [
+      '300',
       '400',
       '500',
       '600',
       '700',
       '800',
-      '900'
+      '900',
+      'A400',
+      'A700',
+      'A900'
     ]
   };
   $mdThemingProvider
