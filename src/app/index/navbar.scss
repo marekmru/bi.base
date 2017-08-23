@@ -5,7 +5,22 @@ md-toolbar.bi-navbar {
 
 .bi-navbar {
   margin-bottom: 0;
-
+  &.loading{
+    position: relative;
+    pointer-events: none;
+    &:after{
+      content: '';
+      position: absolute;
+      display:block;
+      height: 100vh;
+      top: 54px;
+      left:0;
+      right:0;
+      bottom: 0;
+      z-index: 10000;
+      background-color: rgba(0,0,0,0.3);
+    }
+  }
   .left,
   .right {
     min-width: 200px;

@@ -4,7 +4,7 @@ angular
     templateUrl: './app/index/navbar.template.html',
     controller: NavbarController
   });
-
+/* eslint-disable */
 /** @ngInject */
 function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $state, $rootScope) {
   var vm = this;
@@ -51,7 +51,9 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
             vm.profile = undefined;
           });
       }
-    });
+    }); 
+/*    vm.hideLoader = false;
+    vm.vis = true;*/
   };
 
   vm.$onDestroy = function () {

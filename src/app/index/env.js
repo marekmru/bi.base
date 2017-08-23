@@ -3,7 +3,8 @@ angular
   /** @ngInject */
   .provider('BIAuthEnv', function () {
     var _config = {
-      authPath: 'https://bi.plan-net.com/api/v2',
+      _authPath: 'https://bi.plan-net.com/api/v2',
+      authPath: 'http://localhost:5050',
       basePath: 'http://localhost:5050',
       noAuthRoutes: ['login', 'forgot-password', 'reset-password'],
       mainRoute: undefined,
