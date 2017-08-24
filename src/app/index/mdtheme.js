@@ -45,7 +45,7 @@ function mdtheme($mdThemingProvider) {
     .definePalette('customPrimary',
       customPrimary2);
 
-  var customAccent2 = {
+/*  var customAccent2 = {
     50: '#ffffff',
     100: '#ffffff',
     200: '#ded2ff',
@@ -79,11 +79,46 @@ function mdtheme($mdThemingProvider) {
       '800',
       '900'
     ]
+  }; */
+  var customAccent3 = {
+    50: '#f9fafb',
+    100: '#ccd7dc',
+    200: '#abbcc5',
+    300: '#819ba8',
+    400: '#6e8d9b',
+    500: '#607d8b',
+    600: '#536d79',
+    700: '#475c67',
+    800: '#2e3c43',
+    900: '#000000',
+    A100: '#f0f7fa',
+    A200: '#a4ccdf',
+    A400: '#6a9cb4',
+    A700: '#658c9f',
+    contrastDefaultColor: 'light',
+    contrastDarkColors: [
+      '50',
+      '100',
+      '200',
+      '300',
+      '400',
+      'A100',
+      'A200',
+      'A400',
+      'A700'
+    ],
+    contrastLightColors: [
+      '500',
+      '600',
+      '700',
+      '800',
+      '900'
+    ]
   };
 
   $mdThemingProvider
     .definePalette('customAccent',
-      customAccent2);
+      customAccent3);
 
   var customWarn = {
     50: '#fefaf3',
