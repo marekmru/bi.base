@@ -4,9 +4,10 @@ angular
 
 /** @ngInject */
 function configInt($httpProvider) {
-  $httpProvider.interceptors.push(function ($rootScope, $q, BIEvents, $state, BIAuthEnv) {
+  $httpProvider.interceptors.push(function ($rootScope, $q, BIEvents, $injector, BIAuthEnv) {
+    var stateService = $injector.get('$state');
     var isAuthPath = function () {
-      return BIAuthEnv.noAuthRoutes.join('|').indexOf($state.current.name) > -1 && $state.current.name.length > 1;
+      return BIAuthEnv.noAuthRoutes.join('|').indexOf(stateService.current.name) > -1 && stateService.current.name.length > 1;
     };
     return {
       request: function (request) {
