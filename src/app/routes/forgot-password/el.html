@@ -26,7 +26,7 @@
         <md-button class="bi-reset-pw" ui-sref="login" md-no-ink> Zurück zum login</md-button>
       </md-content>
       <md-content ng-if="$ctrl.success.message" class="md-padding" layout="column">
-        <p>$ctrl.success.message</p>
+        <p>{{::$ctrl.success.message}}</p>
         <md-button class="bi-reset-pw" ui-sref="login" md-no-ink> Zurück zum login</md-button>
       </md-content>
     </form>

@@ -3,19 +3,21 @@ angular
   .run(run);
 
 /** @ngInject */
-function run(BIAuthEnv, $log, $state, $rootScope, BIEvents, $mdDialog, $window) {
+function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $window) {
   if (angular.isUndefined(BIAuthEnv.mainRoute)) {
     $log.error('Please define the main route of the application in index/config.js !!!');
   }
-
+  // Var stateService = $injector.get('$state');
   var unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, function () {
     // $state.go('login');
     // $window.location.reload(true);
-    $state.go('login', null, {
+    $injector.get('$state').go('login', null, {
       notify: false
     }).then($window.location.reload);
   });
-  $state.defaultErrorHandler(function () {});
+  try {
+    $injector.get('$state').defaultErrorHandler(angular.noop);
+  } catch (err) {}
 
   var showAlert = function (error) {
     var bcAlert = $mdDialog.alert({
