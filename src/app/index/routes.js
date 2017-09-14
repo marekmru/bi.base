@@ -4,6 +4,7 @@ angular
 
 /** @ngInject */
 function routes($stateProvider, $locationProvider, $urlRouterProvider, $sceProvider) {
+  $sceProvider.enabled(false);
   $stateProvider
     .state('login', {
       url: '/',
@@ -16,7 +17,6 @@ function routes($stateProvider, $locationProvider, $urlRouterProvider, $sceProvi
       url: '/reset/:code',
       component: 'resetPasswordComponent'
     });
-  $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode(false).hashPrefix('');
-  $sceProvider.enabled(false);
+  $urlRouterProvider.otherwise('/');
 }
