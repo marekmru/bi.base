@@ -44,7 +44,7 @@ function mdtheme($mdThemingProvider) {
   $mdThemingProvider
     .definePalette('customPrimary',
       customPrimary2);
-
+// eslint-disable-next-line
 /*  var customAccent2 = {
     50: '#ffffff',
     100: '#ffffff',

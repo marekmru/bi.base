@@ -10,6 +10,7 @@ function configInt($httpProvider) {
       var ret;
       try {
         var ignoredErrors = BIAuthEnv.ignoreErrorsFor;
+        console.log(ignoredErrors);
         var isIgnoredError = ignoredErrors.find(function (value) {
           return rejection.config.url.indexOf(value.name) > 60;
         });
