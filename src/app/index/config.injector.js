@@ -12,7 +12,7 @@ function configInt($httpProvider) {
         var ignoredErrors = BIAuthEnv.ignoreErrorsFor;
         console.log(ignoredErrors);
         var isIgnoredError = ignoredErrors.find(function (value) {
-          return rejection.config.url.indexOf(value.name) > 60;
+          return rejection.config.url.indexOf(value.name) > 0;
         });
         ret = angular.isDefined(isIgnoredError) === false;
       } catch (err) {
@@ -36,7 +36,9 @@ function configInt($httpProvider) {
       },
       responseError: function (rejection) {
         $rootScope.$broadcast(BIEvents.LOAD, false);
-        if (rejection.status === 401 && (isIgnored(rejection) === false) && isAuthPath() === false) {
+        if (rejection.status === 401 &&
+          (isIgnored(rejection) === false) &&
+          isAuthPath() === false) {
           $rootScope.$broadcast(BIEvents.UNAUTHORIZED);
           return $q(function () {
             return null;

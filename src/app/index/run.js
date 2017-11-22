@@ -7,10 +7,7 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
   if (angular.isUndefined(BIAuthEnv.mainRoute)) {
     $log.error('Please define the main route of the application in index/config.js !!!');
   }
-  // Var stateService = $injector.get('$state');
   var unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, function () {
-    // $state.go('login');
-    // $window.location.reload(true);
     $injector.get('$state').go('login', null, {
       notify: false
     }).then($window.location.reload);
