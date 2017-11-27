@@ -4,7 +4,7 @@ angular
 
 /** @ngInject */
 function BIAuthService(BIAuthEnv, $q, $http) {
-  var url = BIAuthEnv.authPath;
+  var url = BIAuthEnv.basePath;
   var EP = {
     login: url + '/login2',
     logout: url + '/logout',
