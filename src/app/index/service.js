@@ -15,6 +15,7 @@ function BIAuthService(BIAuthEnv, $q, $http) {
   var _user = {
     isAuthenticated: false
   };
+
   var _getMessage = function (object) {
     if (Object.prototype.hasOwnProperty.call(object, 'message')) {
       return object;
