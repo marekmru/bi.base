@@ -51,7 +51,7 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
             vm.profile = undefined;
           });
       }
-    }); 
+    });
 /*    vm.hideLoader = false;
     vm.vis = true;*/
   };

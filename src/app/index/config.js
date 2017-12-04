@@ -16,3 +16,10 @@ function config($logProvider, BIAuthEnvProvider, $httpProvider, $mdAriaProvider,
   $httpProvider.defaults.headers.common.Accept = 'application/json';
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
+
+/* global BIAPIBASE */
+angular
+  .module('bi.base')
+  .constant('APPCFG', {
+    APIBASE: angular.isDefined(BIAPIBASE) ? BIAPIBASE : ''
+  });
