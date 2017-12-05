@@ -20,7 +20,8 @@ function BiDialogService($mdDialog, $mdMedia) {
   var service = {
     showAlert: showAlert,
     showConfirm: showConfirm,
-    showAdvanced: showAdvanced
+    showAdvanced: showAdvanced,
+    showTemplateDialog: showTemplateDialog
   };
 
   return service;
@@ -94,11 +95,18 @@ function BiDialogService($mdDialog, $mdMedia) {
 
   function showTemplateDialog(ev, requireTemplate, data) {
     var parent = angular.element(document.body);
-    $mdDialog.show({
-      parent,
+    return $mdDialog.show({
+      parent: parent,
+      targetEvent: ev || null,
       template: requireTemplate,
       locals: {
-        data
+        data: data
+      },
+      controller: function ($scope, $mdDialog, data) {
+        $scope.data = data;
+        $scope.closeDialog = function () {
+          $mdDialog.hide();
+        };
       }
     });
   }
