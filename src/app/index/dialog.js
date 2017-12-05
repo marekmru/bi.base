@@ -75,8 +75,8 @@ function BiDialogService($mdDialog, $mdMedia) {
    * @param  {string} ariaLabel [description]
    * @return {void}
    */
-  function showAlert(ev, title, content, okLabel, ariaLabel) {
-    var p = angular.element(document.querySelector('#popupContainer'));
+  function showAlert(ev, title, content, okLabel) {
+    var p = angular.element(document.body);
     var alert = $mdDialog.alert()
       .parent(p)
       .clickOutsideToClose(true);
@@ -87,10 +87,20 @@ function BiDialogService($mdDialog, $mdMedia) {
         ev,
         title,
         content,
-        okLabel,
-        ariaLabel
+        okLabel
       )
     );
+  }
+
+  function showTemplateDialog(ev, requireTemplate, data) {
+    var parent = angular.element(document.body);
+    $mdDialog.show({
+      parent,
+      template: requireTemplate,
+      locals: {
+        data
+      }
+    });
   }
 
   function showConfirm(ev, title, content, okLabel, cancelLabel, ariaLabel) {
