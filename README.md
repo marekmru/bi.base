@@ -1,1 +1,1 @@
-# Angular module for BI Base
+# Angular module for BI
