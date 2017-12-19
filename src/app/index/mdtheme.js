@@ -4,21 +4,21 @@ angular
 
 /** @ngInject */
 function mdtheme($mdThemingProvider) {
-  var customPrimary2 = {
-    50: '#fef1f1',
-    100: '#f9aaac',
-    200: '#f57578',
-    300: '#f13237',
-    400: '#ef161b',
+  var customPrimary = {
+    50: '#fae2e3',
+    100: '#f3b7b9',
+    200: '#eb878a',
+    300: '#e3575b',
+    400: '#dd3337',
     500: '#d70f14',
-    600: '#ba0d11',
-    700: '#9e0b0f',
-    800: '#81090c',
-    900: '#650709',
-    A100: '#ffe6e7',
-    A200: '#ff8083',
-    A400: '#ff1a20',
-    A700: '#f50b11',
+    600: '#d30d12',
+    700: '#cd0b0e',
+    800: '#c7080b',
+    900: '#be0406',
+    A100: '#ffe6e6',
+    A200: '#ffb3b4',
+    A400: '#ff8081',
+    A700: '#ff6768',
     A900: '#ffffff',
     contrastDefaultColor: 'light',
     contrastDarkColors: [
@@ -26,88 +26,52 @@ function mdtheme($mdThemingProvider) {
       '100',
       '200',
       'A100',
-      'A200'
-    ],
-    contrastLightColors: [
-      '300',
-      '400',
-      '500',
-      '600',
-      '700',
-      '800',
-      '900',
+      'A200',
       'A400',
       'A700',
       'A900'
-    ]
-  };
-  $mdThemingProvider
-    .definePalette('customPrimary',
-      customPrimary2);
-// eslint-disable-next-line
-/*  var customAccent2 = {
-    50: '#ffffff',
-    100: '#ffffff',
-    200: '#ded2ff',
-    300: '#a98aff',
-    400: '#926cff',
-    500: '#7c4dff',
-    600: '#633ECC',
-    700: '#442A8C',
-    800: '#25174D',
-    900: '#000000',
-    A100: '#ffffff',
-    A200: '#ede6ff',
-    A400: '#a280ff',
-    A700: '#8f66ff',
-    contrastDefaultColor: 'light',
-    contrastDarkColors: [
-      '50',
-      '100',
-      '200',
-      '300',
-      '400',
-      'A100',
-      'A200',
-      'A400',
-      'A700'
     ],
     contrastLightColors: [
+      '400',
       '500',
       '600',
       '700',
       '800',
       '900'
     ]
-  }; */
-  var customAccent3 = {
-    50: '#f9fafb',
-    100: '#ccd7dc',
-    200: '#abbcc5',
-    300: '#819ba8',
-    400: '#6e8d9b',
-    500: '#607d8b',
-    600: '#536d79',
-    700: '#475c67',
-    800: '#2e3c43',
-    900: '#000000',
-    A100: '#f0f7fa',
-    A200: '#a4ccdf',
-    A400: '#6a9cb4',
-    A700: '#658c9f',
+  };
+  $mdThemingProvider
+    .definePalette('customPrimary',
+      customPrimary);
+
+  var customAccent = {
+    50: '#ebeeef',
+    100: '#ccd4d8',
+    200: '#abb7be',
+    300: '#899aa3',
+    400: '#6f8590',
+    500: '#566f7c',
+    600: '#4f6774',
+    700: '#455c69',
+    800: '#3c525f',
+    900: '#2b404c',
+    A100: '#98d7ff',
+    A200: '#65c3ff',
+    A400: '#32b0ff',
+    A700: '#19a6ff',
     contrastDefaultColor: 'light',
     contrastDarkColors: [
       '50',
       '100',
       '200',
       '300',
-      '400',
       'A100',
       'A200',
       'A400',
       'A700'
     ],
     contrastLightColors: [
+      '400',
       '500',
       '600',
       '700',
@@ -118,23 +82,23 @@ function mdtheme($mdThemingProvider) {
 
   $mdThemingProvider
     .definePalette('customAccent',
-      customAccent3);
+      customAccent);
 
   var customWarn = {
-    50: '#fefaf3',
-    100: '#f9daab',
-    200: '#f6c377',
-    300: '#f1a534',
-    400: '#ef9918',
-    500: '#d9880f',
-    600: '#bc760d',
-    700: '#a0640b',
-    800: '#835209',
-    900: '#674007',
-    A100: '#fff6e8',
-    A200: '#ffcd82',
-    A400: '#ffa41c',
-    A700: '#f5980d',
+    50: '#ffece0',
+    100: '#ffd1b3',
+    200: '#ffb280',
+    300: '#ff934d',
+    400: '#ff7b26',
+    500: '#ff6400',
+    600: '#ff5c00',
+    700: '#ff5200',
+    800: '#ff4800',
+    900: '#ff3600',
+    A100: '#ffffff',
+    A200: '#fff4f2',
+    A400: '#ffc9bf',
+    A700: '#ffb3a6',
     contrastDefaultColor: 'light',
     contrastDarkColors: [
       '50',
@@ -143,13 +107,13 @@ function mdtheme($mdThemingProvider) {
       '300',
       '400',
       '500',
+      '600',
       'A100',
       'A200',
       'A400',
       'A700'
     ],
     contrastLightColors: [
-      '600',
       '700',
       '800',
       '900'
@@ -161,9 +125,7 @@ function mdtheme($mdThemingProvider) {
       customWarn);
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('customPrimary', {
-
-    })
+    .primaryPalette('customPrimary')
     .accentPalette('customAccent', {
       default: '500',
       'hue-1': '900'
