@@ -15,7 +15,7 @@ function configInt($httpProvider) {
         });
         ret = angular.isDefined(isIgnoredError) === false;
       } catch (err) {
-        ret = true;
+        ret = false;
       }
       return ret;
     };

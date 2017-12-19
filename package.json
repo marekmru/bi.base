@@ -59,7 +59,7 @@
   },
   "main": "./dist/scripts/app.js",
   "name": "bi.base",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "author": "Markus Mrugalla <m.mrugalla@plan-net.com>",
   "eslintConfig": {
     "globals": {

@@ -10,7 +10,7 @@ function mdtheme($mdThemingProvider) {
     200: '#eb878a',
     300: '#e3575b',
     400: '#dd3337',
-    500: '#d70f14',
+    500: '#dd3337',
     600: '#d30d12',
     700: '#cd0b0e',
     800: '#c7080b',
