@@ -1,6 +1,9 @@
 md-toolbar.bi-navbar {
   min-height: 52px;
   height: 52px;
+  color: #fff;
+  background-color: #191919;
+
 }
 
 .bi-navbar {
@@ -20,6 +23,10 @@ md-toolbar.bi-navbar {
       z-index: 10000;
       background-color: rgba(0,0,0,0.3);
     }
+  }
+  md-progress-linear{
+    position: absolute;
+    top: 47px;
   }
   .left,
   .right {
@@ -91,10 +98,8 @@ md-backdrop {
     text-transform: initial;
     font-size: 14px;
   }
-  .md-progress-linear{
-    position: absolute;
-    top: 47px;
-  }
+
+
   .md-button {
     &.nav-button {
       padding: 13px 0 13px 30px;
