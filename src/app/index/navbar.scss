@@ -91,7 +91,10 @@ md-backdrop {
     text-transform: initial;
     font-size: 14px;
   }
-
+  .md-progress-linear{
+    position: absolute;
+    top: 47px;
+  }
   .md-button {
     &.nav-button {
       padding: 13px 0 13px 30px;
