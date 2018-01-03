@@ -1,14 +1,15 @@
 angular
   .module('bi.base')
   .run(run);
-
+/* eslint-disable max-params */
 /** @ngInject */
 function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $window) {
   if (angular.isUndefined(BIAuthEnv.mainRoute)) {
     $log.error('Please define the main route of the application in index/config.js !!!');
   }
-  var unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, function () {
-    $injector.get('$state').go('login', null, {
+  var unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, function (event, next) {
+    const redirection = angular.isDefined(next) ? {next: next} : null;
+    $injector.get('$state').go('login', redirection, {
       notify: false
     }).then($window.location.reload);
   });

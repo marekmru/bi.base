@@ -6,7 +6,7 @@ angular
   });
 /* eslint-disable */
 /** @ngInject */
-function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $state, $rootScope) {
+function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $state, $rootScope, $window) {
   var vm = this;
   var _unwatch;
   var _unwatch2;
@@ -23,7 +23,9 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
   };
   vm.logout = function () {
     BIAuthService.logout().then(function () {
-      $state.go('login');
+      $state.go('login', null, {
+        notify: false
+      }).then($window.location.reload);
     });
   };
   vm.onLoad = function (event, value) {

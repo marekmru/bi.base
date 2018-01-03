@@ -7,7 +7,7 @@ function routes($stateProvider, $locationProvider, $urlRouterProvider, $sceProvi
   $sceProvider.enabled(false);
   $stateProvider
     .state('login', {
-      url: '/',
+      url: '/?next',
       component: 'loginComponent'
     }).state('forgot-password', {
       url: '/forgot-password',

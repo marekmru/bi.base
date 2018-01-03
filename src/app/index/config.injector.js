@@ -1,6 +1,7 @@
 angular
   .module('bi.base')
   .config(configInt);
+/* eslint-disable max-params */
 
 /** @ngInject */
 function configInt($httpProvider) {
@@ -38,7 +39,9 @@ function configInt($httpProvider) {
         if (rejection.status === 401 &&
           (isIgnored(rejection) === false) &&
           isAuthPath() === false) {
-          $rootScope.$broadcast(BIEvents.UNAUTHORIZED);
+          /*eslint-disable */
+          $rootScope.$broadcast(BIEvents.UNAUTHORIZED, window.location.href);
+          /*eslint-enable */
           return $q(function () {
             return null;
           });
