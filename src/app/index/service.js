@@ -10,6 +10,7 @@ function BIAuthService(BIAuthEnv, $q, $http) {
     logout: url + '/logout',
     reset: url + '/reset',
     profile: url + '/profile',
+    user: url + '/user',
     info: url + '/info'
   };
   var _user = {
@@ -47,6 +48,16 @@ function BIAuthService(BIAuthEnv, $q, $http) {
       method: 'GET',
       url: EP.info
     }).then(handleSuccess, handleError);
+  };
+  this.updatePassword = function (data) {
+    if (angular.isDefined(data.password)) {
+      return $http({
+        method: 'PUT',
+        data: data,
+        url: EP.user
+      }).then(handleSuccess, handleError);
+    }
+    return $q.reject('Please set a password');
   };
 
   this.reset = function (data) {
