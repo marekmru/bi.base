@@ -96,9 +96,9 @@ function mdtheme($mdThemingProvider) {
     800: '#ff4800',
     900: '#ff3600',
     A100: '#ffffff',
-    A200: '#fff4f2',
-    A400: '#ffc9bf',
-    A700: '#ffb3a6',
+    A200: '#ffd1b3',
+    A400: '#ff934d',
+    A700: '#ff6400',
     contrastDefaultColor: 'light',
     contrastDarkColors: [
       '50',
