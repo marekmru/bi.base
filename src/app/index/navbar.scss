@@ -71,8 +71,8 @@ md-backdrop {
   .bc-sidenav-header {
     background-color: #969696;
     color: #fff;
-    margin-bottom: 30px;
-    padding: 36px 0;
+    margin-bottom: 0;
+    padding: 12px 0;
 
     .bc-user {
       padding: 0;
@@ -83,7 +83,8 @@ md-backdrop {
     }
 
     .bc-user-name {
-      font-size: 15px;
+      font-size: 14px;
+      font-weight: 600;
       margin-bottom: 0;
     }
 
