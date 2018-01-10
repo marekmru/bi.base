@@ -25,7 +25,7 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
     BIAuthService.logout().then(function () {
       $state.go('login', null, {
         notify: false
-      }).then($window.location.reload);
+      }).then(window.location.reload);
     });
   };
   vm.onLoad = function (event, value) {
