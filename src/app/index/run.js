@@ -8,7 +8,9 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
     $log.error('Please define the main route of the application in index/config.js !!!');
   }
   var unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, function (event, next) {
-    const redirection = angular.isDefined(next) ? {next: next} : null;
+    const redirection = angular.isDefined(next) ? {
+      next: next
+    } : null;
     $injector.get('$state').go('login', redirection, {
       notify: false
     }).then($window.location.reload);
@@ -40,4 +42,5 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
     unwatch1();
     unwatch2();
   }); // Remove state rejection errors
+  $log.info('PNBI.BASE - visit:', 'https://gist.github.com/marekmru/');
 }

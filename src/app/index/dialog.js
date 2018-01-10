@@ -7,7 +7,6 @@ function BiDialogService($mdDialog, $mdMedia) {
   var defaults = {
     title: 'This is an alert title',
     content: 'You can specify some description text in here.',
-    ariaLabel: 'Alert Dialog Demo',
     okLabel: 'Ok'
   };
   var advancedDefaults = {
@@ -28,16 +27,14 @@ function BiDialogService($mdDialog, $mdMedia) {
 
   // //////////
 
-  function build(dialog, ev, title, content, okLabel, ariaLabel) {
+  function build(dialog, ev, title, content, okLabel) {
     title = title || defaults.title;
     content = content || defaults.content;
-    ariaLabel = ariaLabel || defaults.ariaLabel;
     okLabel = okLabel || defaults.okLabel;
 
     var modalDialog = dialog
       .title(title)
       .textContent(content)
-      .ariaLabel(ariaLabel)
       .ok(okLabel);
 
     if (ev) {
@@ -73,7 +70,6 @@ function BiDialogService($mdDialog, $mdMedia) {
    * @param  {string} title - The title of the dialog.
    * @param  {string} content - The text of the dialog.
    * @param  {string} okLabel - Label for 'OK' button.
-   * @param  {string} ariaLabel [description]
    * @return {void}
    */
   function showAlert(ev, title, content, okLabel) {
@@ -110,8 +106,8 @@ function BiDialogService($mdDialog, $mdMedia) {
       }
     });
   }
-
-  function showConfirm(ev, title, content, okLabel, cancelLabel, ariaLabel) {
+/* eslint-disable max-params */
+  function showConfirm(ev, title, content, okLabel, cancelLabel) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
       .cancel(cancelLabel);
@@ -122,8 +118,7 @@ function BiDialogService($mdDialog, $mdMedia) {
         ev,
         title,
         content,
-        okLabel,
-        ariaLabel
+        okLabel
       )
     ).then(function () {
       return true;

@@ -2,7 +2,6 @@ angular
   .module('bi.base')
   .config(configInt);
 /* eslint-disable max-params */
-
 /** @ngInject */
 function configInt($httpProvider) {
   $httpProvider.interceptors.push(function ($rootScope, $q, BIEvents, $injector, BIAuthEnv) {
@@ -14,7 +13,7 @@ function configInt($httpProvider) {
         var isIgnoredError = ignoredErrors.find(function (value) {
           return rejection.config.url.indexOf(value.name) > 0;
         });
-        ret = angular.isDefined(isIgnoredError) === false;
+        ret = angular.isDefined(isIgnoredError);
       } catch (err) {
         ret = false;
       }
@@ -26,16 +25,16 @@ function configInt($httpProvider) {
         stateService.current.name.length > 1;
     };
     return {
-      request: function (request) {
-        $rootScope.$broadcast(BIEvents.LOAD, true);
+/*      request: function (request) {
+      //  $rootScope.$broadcast(BIEvents.LOAD, true);
         return request;
       },
       response: function (response) {
-        $rootScope.$broadcast(BIEvents.LOAD, false);
+      //  $rootScope.$broadcast(BIEvents.LOAD, false);
         return response;
-      },
+      }, */
       responseError: function (rejection) {
-        $rootScope.$broadcast(BIEvents.LOAD, false);
+        // $rootScope.$broadcast(BIEvents.LOAD, false);
         if (rejection.status === 401 &&
           (isIgnored(rejection) === false) &&
           isAuthPath() === false) {

@@ -1,7 +1,7 @@
 angular
   .module('bi.base')
   .config(config);
-
+/* eslint-disable max-params */
 /** @ngInject */
 function config($logProvider, BIAuthEnvProvider, $httpProvider, $mdAriaProvider, $compileProvider, $qProvider) {
   $httpProvider.useApplyAsync(true);
