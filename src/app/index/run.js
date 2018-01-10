@@ -42,5 +42,5 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
     unwatch1();
     unwatch2();
   }); // Remove state rejection errors
-  $log.info('PNBI.BASE - visit:', 'https://gist.github.com/marekmru/');
+  $log.debug('PNBI.BASE - visit:', 'https://gist.github.com/marekmru/');
 }
