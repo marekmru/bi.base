@@ -41,8 +41,6 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
     vm.profile = undefined;
     var hiddenIn = BIAuthEnv.noAuthRoutes;
     _unwatch = $transitions.onStart({
-      to: '*',
-      from: '*'
     }, function (transition) {
       $mdSidenav('md-sidenav-left').close();
       vm.currentState = transition.to().name;
