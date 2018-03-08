@@ -17,7 +17,7 @@ function ResetPasswordController(BIAuthService, $state, $stateParams) {
     BIAuthService.reset(this.user).then(function () {
       $state.go('login');
     }, function (error) {
-      vm.error = error.message.password_code + '.';
+      vm.error = error;
     });
   };
 }

@@ -32,7 +32,6 @@ function BIAuthService(BIAuthEnv, $q, $http) {
     return null;
   };
   var handleError = function (response) {
-    console.log('handleError', response);
     var message = _getMessage(response).message;
     if (message === null) {
       return $q.reject(this.BIAuthEnv.unknown);
@@ -52,7 +51,6 @@ function BIAuthService(BIAuthEnv, $q, $http) {
   };
 
   this.updatePassword = function (data) {
-    console.log('updatePassword');
     if (angular.isDefined(data.password)) {
       return $http({
         method: 'PUT',

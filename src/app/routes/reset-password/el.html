@@ -8,7 +8,7 @@
         </h2>
         <md-input-container class="md-block">
           <label>Neues Passwort</label>
-          <input ng-model="$ctrl.user.password" name="password" type="password" required ng-minlength="3" ng-disabled="$ctrl.error">
+          <input ng-model="$ctrl.user.password" name="password" type="password" required ng-minlength="3" ng-disabled="$ctrl.error.password_code">
           <div ng-messages="form.password.$error" role="alert" ng-if="form.password.$dirty">
             <div ng-message="required">Geben Sie ein neues Passwort ein.</div>
             <div ng-message="minlength">Das Passwort muss aus mindestens 6 Zeichen bestehen.</div>
@@ -16,7 +16,7 @@
         </md-input-container>
         <md-input-container class="md-block">
           <label>Passwort wiederholen</label>
-          <input ng-model="$ctrl.confirmPassword" name="confirmPassword" type="password" required ng-disabled="$ctrl.error" ng-minlength="3" compare-to="$ctrl.user.password">
+          <input ng-model="$ctrl.confirmPassword" name="confirmPassword" type="password" required ng-disabled="$ctrl.error.password_code" ng-minlength="3" compare-to="$ctrl.user.password">
           <div ng-messages="form.confirmPassword.$error" role="alert" ng-if="form.confirmPassword.$dirty">
             <div ng-message="required">Geben Sie ein neues Passwort ein.</div>
             <div ng-message="minlength">Das Passwort muss aus mindestens 6 Zeichen bestehen.</div>
@@ -25,12 +25,20 @@
           </div>
           <br>
           <div class="c-alert md-block" ng-if="$ctrl.error">
-            <span class="md-body-2">{{$ctrl.error}}</span><br>
-            <a href="#" ui-sref="forgot-password">Create new token</a>
+            <ul style="margin:0;list-style:none;padding:0">
+              <li ng-if="$ctrl.error.length">
+                <p>Password to weak</p>
+                </li>
+              <li ng-repeat="(key, value) in $ctrl.error">
+                <p>{{value}}</p>
+              </li>
+            </ul>
+            <br>
+            <a href="#" ui-sref="forgot-password" ng-if="$ctrl.error.password_code">Create new token</a>
           </div>
         </md-input-container>
 
-        <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid || $ctrl.error">Weiter
+        <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid || $ctrl.error.password_code">Weiter
         </md-button>
       </md-content>
 
