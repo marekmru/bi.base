@@ -34,6 +34,18 @@ function configInt($httpProvider) {
         return response;
       }, */
       responseError: function (rejection) {
+        // redirect to forbidden page if status 403
+        // and page is not in AuthRoutes. 
+        // Defined in env.js
+        if (rejection.status === 403 && isAuthPath() === false) {
+          console.log('forbidded')
+          /*eslint-disable */
+          $rootScope.$broadcast(BIEvents.FORBIDDEN);
+          /*eslint-enable */
+          return $q(function () {
+            return null;
+          });
+        }
         // $rootScope.$broadcast(BIEvents.LOAD, false);
         if (rejection.status === 401 &&
           (isIgnored(rejection) === false) &&

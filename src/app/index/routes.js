@@ -16,6 +16,10 @@ function routes($stateProvider, $locationProvider, $urlRouterProvider, $sceProvi
     .state('reset', {
       url: '/reset/:code',
       component: 'resetPasswordComponent'
+    })
+    .state('forbidden', {
+      url: '/forbidden',
+      component: 'forbiddenComponent'
     });
   $locationProvider.html5Mode(false).hashPrefix('');
   $urlRouterProvider.otherwise('/');

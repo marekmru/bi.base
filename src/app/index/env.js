@@ -4,7 +4,7 @@ angular
   .provider('BIAuthEnv', function () {
     var _config = {
       basePath: 'http://localhost:5050',
-      noAuthRoutes: ['login', 'forgot-password', 'reset'],
+      noAuthRoutes: ['login', 'forgot-password', 'reset', 'forbidden'],
       mainRoute: undefined,
       errors: {
         unknown: 'An unknown error occurred.'

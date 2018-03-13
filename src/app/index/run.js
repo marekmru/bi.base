@@ -15,6 +15,9 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
       notify: false
     }).then($window.location.reload);
   });
+  var unwatch3 = $rootScope.$on(BIEvents.FORBIDDEN, function (event, next) {
+    $injector.get('$state').go('forbidden')
+  });
   try {
     $injector.get('$state').defaultErrorHandler(angular.noop);
   } catch (err) {}
@@ -41,6 +44,7 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
   $rootScope.$on('$destroy', function () {
     unwatch1();
     unwatch2();
+    unwatch3();
   }); // Remove state rejection errors
   $log.debug('PNBI.BASE - visit:', 'https://gist.github.com/marekmru/');
 }
