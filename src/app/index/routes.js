@@ -20,6 +20,10 @@ function routes($stateProvider, $locationProvider, $urlRouterProvider, $sceProvi
     .state('forbidden', {
       url: '/forbidden',
       component: 'forbiddenComponent'
+    })
+    .state('cookies', {
+      url: '/cookies',
+      component: 'cookiesComponent'
     });
   $locationProvider.html5Mode(false).hashPrefix('');
   $urlRouterProvider.otherwise('/');

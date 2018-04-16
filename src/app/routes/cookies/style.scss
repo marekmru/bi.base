@@ -2,6 +2,7 @@
     background-position: center center;
     background-size: cover;
     height: 100vh;
+    opacity: 0;
     transition: opacity 0.5s ease-in-out;
     &.ready, &.reset, &.forgot {
         opacity: 1;
@@ -84,10 +85,6 @@
             line-height: 2;
             font-size: 24px;
         }
-    }
-    
-    .disclaimer {
-      padding: 36px;
     }
 }
 

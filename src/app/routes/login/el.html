@@ -2,7 +2,7 @@
   <h1 class="bi-powered">POWERED BY CORE</h1>
   <div class="login-box md-whiteframe-z2" layout="column">
     <form name="form" novalidate="">
-      <md-content class="md-padding" layout="column">
+      <md-content class="md-padding" layout="column" ng-hide="$ctrl.dislaimerVisible">
         <h2 class="bi-headline" app-title=""></h2>
         <md-input-container>
           <label>Nutzername</label>
@@ -32,6 +32,27 @@
         <br>
         <md-button class="bi-reset-pw" ui-sref="forgot-password" md-no-ink="">Passwort zurücksetzen</md-button>
       </md-content>
+
+      <!-- disclaimer -->
+      <md-content class="disclaimer" ng-show="$ctrl.dislaimerVisible">
+        <p>Plan.net BI möchte Ihnen den bestmöglichen Service bieten. Dazu speichern wir Informationen über Ihren Besuch in sogenannten Cookies.</p>
+        <p>Durch die Nutzung dieser Webseite erklären Sie sich mit der Verwendung von Cookies einverstanden.
+          Detaillierte Informationen über den Einsatz von Cookies auf dieser Webseite erhalten Sie durch Klick auf „Mehr Informationen“.
+          An dieser Stelle können Sie auch der Verwendung von Cookies widersprechen und die Browsereinstellungen entsprechend anpassen.
+        </p>
+        <md-button type="button"
+          class="md-raised"
+          ng-click="$ctrl.dislaimerAccept()">
+          Einverstanden
+        </md-button>
+        <md-button type="button"
+          class="md-flat"
+          ng-click="$ctrl.showCookiesPage($event)">
+          Weitere Informationen
+        </md-button>
+
+      </md-content>
+
     </form>
   </div>
   <div class="bi-copyright"><span>&copy; 2017</span></div>

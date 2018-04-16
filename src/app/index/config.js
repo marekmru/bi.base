@@ -21,5 +21,5 @@ function config($logProvider, BIAuthEnvProvider, $httpProvider, $mdAriaProvider,
 angular
   .module('bi.base')
   .constant('APPCFG', {
-    APIBASE: angular.isDefined(BIAPIBASE) ? BIAPIBASE : ''
+    APIBASE: 'http://localhost:5050'
   });
