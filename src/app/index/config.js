@@ -17,9 +17,12 @@ function config($logProvider, BIAuthEnvProvider, $httpProvider, $mdAriaProvider,
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
 
+
+
+
 /* global BIAPIBASE */
 angular
   .module('bi.base')
   .constant('APPCFG', {
-    APIBASE: 'http://localhost:5050'
+    APIBASE: angular.isDefined(BIAPIBASE) ? BIAPIBASE : ''
   });

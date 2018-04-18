@@ -37,16 +37,17 @@ function configInt($httpProvider) {
         // redirect to forbidden page if status 403
         // and page is not in AuthRoutes.
         // Defined in env.js
-        if (rejection.status === 403 && isAuthPath() === false) {
+       // console.log(rejection.config.url.includes('bucket'), '----')
+        if (rejection.status === 403 && (/* rejection.config.url.includes('bucket') || */ isAuthPath() === false)) {
           /*eslint-disable */
-          $rootScope.$broadcast(BIEvents.FORBIDDEN);
+          $rootScope.$broadcast(BIEvents.FORBIDDEN, rejection);
           /*eslint-enable */
           return $q(function () {
             return null;
           });
         }
         // $rootScope.$broadcast(BIEvents.LOAD, false);
-        if (rejection.status === 401 &&
+        else if (rejection.status === 401 &&
           (isIgnored(rejection) === false) &&
           isAuthPath() === false) {
           /*eslint-disable */

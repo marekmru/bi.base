@@ -17,13 +17,13 @@ function routes($stateProvider, $locationProvider, $urlRouterProvider, $sceProvi
       url: '/reset/:code',
       component: 'resetPasswordComponent'
     })
-    .state('forbidden', {
-      url: '/forbidden',
-      component: 'forbiddenComponent'
+    .state('privacy', {
+      url: '/privacy-policy',
+      component: 'ppComponent'
     })
-    .state('cookies', {
-      url: '/cookies',
-      component: 'cookiesComponent'
+    .state('imprint', {
+      url: '/imprint',
+      component: 'imprintComponent'
     });
   $locationProvider.html5Mode(false).hashPrefix('');
   $urlRouterProvider.otherwise('/');

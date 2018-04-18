@@ -1,59 +1,38 @@
 <div layout="column" layout-align-xs="start center" layout-align-gt-xs="center center" layout-fill="layout-fill" id="login" ng-class="{ready: $ctrl.ready}">
-  <h1 class="bi-powered">POWERED BY CORE</h1>
-  <div class="login-box md-whiteframe-z2" layout="column">
-    <form name="form" novalidate="">
-      <md-content class="md-padding" layout="column" ng-hide="$ctrl.dislaimerVisible">
-        <h2 class="bi-headline" app-title=""></h2>
-        <md-input-container>
-          <label>Nutzername</label>
-          <input type="text" ng-model="$ctrl.user.username" name="username" required="" ng-minlength="3" md-autofocus required-disabled>
-          <div ng-messages="form.username.$error" role="alert" ng-show="form.username.$dirty">
-            <div ng-message="required">Geben Sie einen Namen ein.</div>
-            <div ng-message="minlength">Der Name muss aus mindestens 3 Zeichen bestehen.</div>
+    <h1 class="bi-powered">POWERED BY CORE</h1>
+    <div class="login-box md-whiteframe-z2" layout="column">
+      <form name="form" novalidate="">
+        <md-content class="md-padding" layout="column">
+          <h2 class="bi-headline" app-title=""></h2>
+          <md-input-container>
+            <label>Nutzername</label>
+            <input type="text" ng-model="$ctrl.user.username" name="username" required="" ng-minlength="3" md-autofocus required-disabled>
+            <div ng-messages="form.username.$error" role="alert" ng-show="form.username.$dirty">
+              <div ng-message="required">Geben Sie einen Namen ein.</div>
+              <div ng-message="minlength">Der Name muss aus mindestens 3 Zeichen bestehen.</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Passwort</label>
+            <input ng-model="$ctrl.user.password" name="password" type="password" required="" ng-minlength="3"  required-disabled>
+  
+            <div ng-messages="form.password.$error" role="alert" ng-show="form.password.$dirty">
+              <div ng-message="required">Geben Sie ein Passwort ein.</div>
+              <div ng-message="minlength">Das Passwort muss aus mindestens 3 Zeichen bestehen.</div>
+            </divs>
+  
+            <div class="bi-alert md-block" ng-if="$ctrl.error" role="alert">
+              <span class="md-body-1" md-colors="{color: 'warn-500'}">Bitte überprüfen Sie ihren Namen und das Passwort.</span>
+            </div>
+          </md-input-container>
+          <div layout="column">
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="$ctrl.submit()">
+              LOGIN</md-button>
           </div>
-        </md-input-container>
-        <md-input-container>
-          <label>Passwort</label>
-          <input ng-model="$ctrl.user.password" name="password" type="password" required="" ng-minlength="3"  required-disabled>
-
-          <div ng-messages="form.password.$error" role="alert" ng-show="form.password.$dirty">
-            <div ng-message="required">Geben Sie ein Passwort ein.</div>
-            <div ng-message="minlength">Das Passwort muss aus mindestens 3 Zeichen bestehen.</div>
-          </divs>
-
-          <div class="bi-alert md-block" ng-if="$ctrl.error" role="alert">
-            <span class="md-body-1" md-colors="{color: 'warn-500'}">Bitte überprüfen Sie ihren Namen und das Passwort.</span>
-          </div>
-        </md-input-container>
-        <div layout="column">
-          <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="$ctrl.submit()">
-            LOGIN</md-button>
-        </div>
-        <br>
-        <md-button class="bi-reset-pw" ui-sref="forgot-password" md-no-ink="">Passwort zurücksetzen</md-button>
-      </md-content>
-
-      <!-- disclaimer -->
-      <md-content class="disclaimer" ng-show="$ctrl.dislaimerVisible">
-        <p>Plan.net BI möchte Ihnen den bestmöglichen Service bieten. Dazu speichern wir Informationen über Ihren Besuch in sogenannten Cookies.</p>
-        <p>Durch die Nutzung dieser Webseite erklären Sie sich mit der Verwendung von Cookies einverstanden.
-          Detaillierte Informationen über den Einsatz von Cookies auf dieser Webseite erhalten Sie durch Klick auf „Mehr Informationen“.
-          An dieser Stelle können Sie auch der Verwendung von Cookies widersprechen und die Browsereinstellungen entsprechend anpassen.
-        </p>
-        <md-button type="button"
-          class="md-raised"
-          ng-click="$ctrl.dislaimerAccept()">
-          Einverstanden
-        </md-button>
-        <md-button type="button"
-          class="md-flat"
-          ng-click="$ctrl.showCookiesPage($event)">
-          Weitere Informationen
-        </md-button>
-
-      </md-content>
-
-    </form>
+          <br>
+          <md-button class="bi-reset-pw" ui-sref="forgot-password" md-no-ink="">Passwort zurücksetzen</md-button>
+        </md-content>
+      </form>
+    </div>
+    <div class="bi-copyright"><span>&copy; 2018</span></div>
   </div>
-  <div class="bi-copyright"><span>&copy; 2017</span></div>
-</div>

@@ -3,10 +3,7 @@ angular
   .run(run);
 /* eslint-disable max-params */
 /** @ngInject */
-function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $window) {
-  if (angular.isUndefined(BIAuthEnv.mainRoute)) {
-    $log.error('Please define the main route of the application in index/config.js !!!');
-  }
+function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
   var unwatch1 = $rootScope.$on(BIEvents.UNAUTHORIZED, function (event, next) {
     const redirection = angular.isDefined(next) ? {
       next: next
@@ -15,9 +12,10 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
       notify: false
     }).then($window.location.reload);
   });
-  var unwatch3 = $rootScope.$on(BIEvents.FORBIDDEN, function (event, next) {
-    $injector.get('$state').go('forbidden')
+  var unwatch3 = $rootScope.$on(BIEvents.FORBIDDEN, function (event, error) {
+    show403(error);
   });
+
   try {
     $injector.get('$state').defaultErrorHandler(angular.noop);
   } catch (err) {}
@@ -36,6 +34,38 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
         bcAlert = undefined;
       });
   };
+  var show403 = function (error) {
+    /** @ngInject */
+    function DialogController($scope, $mdDialog, BIAuthEnv, $state) {
+      $scope.closeDialog = function () {
+        $state.go(BIAuthEnv.mainRoute);
+        $mdDialog.hide();
+      }
+    }
+    var bcAlert = $mdDialog.alert({
+      clickOutsideToClose: false,
+      escapeToClose: false,
+      controller: DialogController,
+      template:
+      '<md-dialog aria-label="Error dialog" style="padding: 16px;">' +
+      '  <md-dialog-content>'+
+      '    <p><strong>Fehler 403: Zugriff verweigert</strong></p><p></p>Bitte kontaktieren Sie uns unter:<br>'+
+      '      <a href="mailto:bi-ops@plan-net.com">bi-ops@plan-net.com</a>'+
+      '    </p>'+
+      '  </md-dialog-content>' +
+      '  <md-dialog-actions>' +
+      '    <md-button ng-click="closeDialog()" class="md-primary">' +
+      '      Zur Startseite' +
+      '    </md-button>' +
+      '  </md-dialog-actions>' +
+      '</md-dialog>'
+    });
+    $mdDialog
+      .show(bcAlert)
+      .finally(function () {
+        bcAlert = undefined;
+      });
+  };
   // Handle response error golbally
   var unwatch2 = $rootScope.$on(BIEvents.ERROR, function (event, error) {
     showAlert(error);
@@ -46,5 +76,5 @@ function run(BIAuthEnv, $log, $injector, $rootScope, BIEvents, $mdDialog, $windo
     unwatch2();
     unwatch3();
   }); // Remove state rejection errors
-  $log.debug('PNBI.BASE - visit:', 'https://gist.github.com/marekmru/');
+  // $log.debug('PNBI.BASE - visit:', 'https://gist.github.com/marekmru/');
 }

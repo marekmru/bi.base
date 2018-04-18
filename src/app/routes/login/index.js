@@ -19,34 +19,13 @@ function LoginController($state, BIAuthService, BIAuthEnv, $location, $window) {
     }
   };
   vm.submit = function () {
-    BIAuthService.login(vm.user).then(
-      // goMainRoute,
-      function () {
-        if (vm.dislaimerAccepted) {
-          goMainRoute();
-        } else {
-          vm.dislaimerVisible = true;
-        }
-      },
+    BIAuthService.login(vm.user).then(goMainRoute,
       function (data) {
         vm.error = angular.isString(data) ? data : true;
       }
     );
   };
-  vm.dislaimerAccept = function () {
-    this.dislaimerAccepted = true;
-    localStorage.setItem('dislaimerAccepted', angular.toJson(this.dislaimerAccepted));
-    goMainRoute();
-  };
-  vm.showCookiesPage = function () {
-    $state.go('cookies');
-  };
   vm.$onInit = function () {
-    const dislaimerAccepted = localStorage.getItem('dislaimerAccepted');
-    if (dislaimerAccepted !== null) {
-      vm.dislaimerAccepted = angular.fromJson(dislaimerAccepted);
-    }
-
     BIAuthService.profile().then(
       goMainRoute,
       function () {
