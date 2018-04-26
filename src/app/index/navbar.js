@@ -62,7 +62,7 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
       if (angular.isUndefined(vm.profile)) {
         BIAuthService.profile().then(
           function (value) {
-            window.$$USER = value;
+            window.CORE = value;
             vm.profile = value;
           },
           function () {
