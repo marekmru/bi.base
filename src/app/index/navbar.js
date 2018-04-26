@@ -11,6 +11,19 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
   var _unwatch;
   var _unwatch2;
   vm.hideLoader = true;
+
+  (function tealiumEnabler (){
+    a='//tags.tiqcdn.com/utag/plan-net-training/b.zimmermann/dev/utag.js';
+    b=document;
+    c='script';
+    d=b.createElement(c);
+    d.src=a;
+    d.type='text/java'+c;
+    d.async=true;
+    a=b.getElementsByTagName(c)[0];
+    a.parentNode.insertBefore(d,a);
+  })();
+
   vm.toggleMenu = function () {
     $mdSidenav('md-sidenav-left').toggle();
   };
@@ -49,6 +62,7 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
       if (angular.isUndefined(vm.profile)) {
         BIAuthService.profile().then(
           function (value) {
+            window.$$USER = value;
             vm.profile = value;
           },
           function () {
