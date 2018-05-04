@@ -15,6 +15,9 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
   var unwatch3 = $rootScope.$on(BIEvents.FORBIDDEN, function (event, error) {
     show403(error);
   });
+  var unwatch4 = $rootScope.$on(BIEvents.SHOW_COMPONENT, function (event, data) {
+    showDSE(data);
+  });
 
   try {
     $injector.get('$state').defaultErrorHandler(angular.noop);
@@ -66,6 +69,36 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
         bcAlert = undefined;
       });
   };
+  var showDSE = function (error) {
+    /** @ngInject */
+    function DialogController($scope, $mdDialog, BIAuthEnv, $state) {
+      $scope.closeDialog = function () {
+        $state.go('login');
+        $mdDialog.hide();
+      }
+    }
+    var bcAlert = $mdDialog.alert({
+      clickOutsideToClose: false,
+      escapeToClose: false,
+      controller: DialogController,
+      template:
+      '<md-dialog aria-label="Datenschutz Dialog" style="padding: 16px;">' +
+      '  <md-dialog-content>'+
+      '  <pp-component type="layer"></pp-component>'+  
+      '  </md-dialog-content>' +
+      '  <md-dialog-actions>' +
+      '    <md-button ng-click="closeDialog()" class="md-primary">' +
+      '      Schließen' +
+      '    </md-button>' +
+      '  </md-dialog-actions>' +
+      '</md-dialog>'
+    });
+    $mdDialog
+      .show(bcAlert)
+      .finally(function () {
+        bcAlert = undefined;
+      });
+  };
   // Handle response error golbally
   var unwatch2 = $rootScope.$on(BIEvents.ERROR, function (event, error) {
     showAlert(error);
@@ -75,6 +108,6 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
     unwatch1();
     unwatch2();
     unwatch3();
+    unwatch4();
   }); // Remove state rejection errors
-  // $log.debug('PNBI.BASE - visit:', 'https://gist.github.com/marekmru/');
 }

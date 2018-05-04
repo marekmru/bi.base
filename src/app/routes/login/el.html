@@ -2,7 +2,22 @@
     <h1 class="bi-powered">POWERED BY CORE</h1>
     <div class="login-box md-whiteframe-z2" layout="column">
       <form name="form" novalidate="">
-        <md-content class="md-padding" layout="column">
+        <md-content class="md-padding" layout="column" ng-if="$ctrl.optIn">
+          <h2 class="bi-headline" style="margin-bottom: 0;">Cookies</h2>
+          <md-input-container>
+            <p style="margin-top: 0;">
+              Wir verwenden <strong>Cookies</strong>, um die Aufrufe unserer Website zu analysieren.<br>
+              Mit der Nutzung unserer Website erklären Sie sich damit einverstanden.
+            </p>
+          </md-input-container>
+          <md-button class="md-primary" ng-click="$ctrl.showDatenschutz()">Mehr Informationen</md-button>
+          <br>
+          <div layout="column">
+            <md-button type="submit" class="md-raised md-primary" ng-click="$ctrl.onOptInClick()">
+              Zustimmen</md-button>
+          </div>
+        </md-content>
+        <md-content class="md-padding" layout="column" ng-if="!$ctrl.optIn">
           <h2 class="bi-headline" app-title=""></h2>
           <md-input-container>
             <label>Nutzername</label>
@@ -34,5 +49,5 @@
         </md-content>
       </form>
     </div>
-    <div class="bi-copyright"><span>&copy; 2018</span></div>
   </div>
+  <cookie ng-if="!$ctrl.optIn" profile="$ctrl.user"></cookie>	

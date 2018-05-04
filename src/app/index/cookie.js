@@ -2,13 +2,16 @@ angular
   .module('bi.base')
   .component('cookie', {
     templateUrl: './app/index/cookie.html',
-    controller: CookieController
+    controller: CookieController,
+    bindings: {
+      profile: '<'
+    }
   });
 /* eslint-disable */
 /** @ngInject */
-function CookieController(BIAuthService, $state) {
+function CookieController(BIAuthService, $state, $rootScope, BIEvents) {
   var vm = this;
-  vm.vis = false;
+  vm.vis = true;
   var secret = 'fguusdifhsk'
   var pid = undefined;
 
@@ -22,9 +25,18 @@ function CookieController(BIAuthService, $state) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
     vm.vis = false
   };
-
-  vm.$onInit = function () {
-    var getCookie = function (name) {
+  vm.showDatenschutz = function () {
+    $rootScope.$broadcast(BIEvents.SHOW_COMPONENT, {type: 'dse'});
+  };
+  vm.$onChanges = function (changes) {
+    console.log(changes.currentValue.opt_in, '--------');
+    updateCookie(changes.currentValue)
+  };
+  var updateCookie = function (user) {
+    if (user.opt_in != null) {
+      return
+    } 
+    var getCookie = function (user) {
       var nameEQ = name + "=";
       var ca = document.cookie.split(';');
       for(var i=0;i < ca.length;i++) {
@@ -34,15 +46,11 @@ function CookieController(BIAuthService, $state) {
       }
       return null;
     };
-    BIAuthService.profile().then(
-      function (data) {
-        const accepted = getCookie(secret + data._id)
-        if (accepted == null) {
-          pid = secret+data._id
-          vm.vis = true
-        } 
-      }
-    )
+    const accepted = getCookie(secret + user._id)
+    if (accepted == null) {
+      pid = secret+data._id
+      vm.vis = true
+    } 
   };
 
   vm.$onDestroy = function () {

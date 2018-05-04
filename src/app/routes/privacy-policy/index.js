@@ -2,7 +2,10 @@ angular
   .module('bi.base')
   .component('ppComponent', {
     templateUrl: './app/routes/privacy-policy/el.html',
-    controller: PPController
+    controller: PPController,
+    bindings: {
+      type: '@'
+    }
   });
 
 /** @ngInject */

@@ -1,9 +1,9 @@
-angular
+/* angular
   .module('bi.base')
-  .directive('poweredBy', fn);
+  .directive('poweredBy', fn); */
 
 /** @ngInject */
-function fn() {
+/* function fn() {
   var directive = {
     restrict: 'A',
     scope: false,
@@ -16,7 +16,7 @@ function fn() {
   }
 
   return directive;
-}
+} */
 
 angular
   .module('bi.base')

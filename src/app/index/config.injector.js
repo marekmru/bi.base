@@ -38,7 +38,7 @@ function configInt($httpProvider) {
         // and page is not in AuthRoutes.
         // Defined in env.js
        // console.log(rejection.config.url.includes('bucket'), '----')
-        if (rejection.status === 403 && (/* rejection.config.url.includes('bucket') || */ isAuthPath() === false)) {
+        if (rejection.status === 403 && (isAuthPath() === false)) {
           /*eslint-disable */
           $rootScope.$broadcast(BIEvents.FORBIDDEN, rejection);
           /*eslint-enable */

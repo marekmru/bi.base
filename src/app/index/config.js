@@ -17,9 +17,6 @@ function config($logProvider, BIAuthEnvProvider, $httpProvider, $mdAriaProvider,
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
 
-
-
-
 /* global BIAPIBASE */
 angular
   .module('bi.base')
