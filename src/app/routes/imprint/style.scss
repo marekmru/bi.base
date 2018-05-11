@@ -1,3 +1,10 @@
+md-dialog{
+    #privacy-policy, #imprint{
+        md-card{
+            box-shadow: none;
+        }
+    }
+}
 #imprint{
     strong{
         display: block;

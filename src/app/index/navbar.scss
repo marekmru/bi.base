@@ -76,15 +76,29 @@ md-backdrop {
 
     .bc-user {
       padding: 0;
-
-      .md-button {
-        min-width: 78px;
+      .avatar-container{
+        padding: 2px 6px 0 8px;
+        div{
+          background-color: #fff;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          md-icon{
+            font-size: 30px;
+            position: relative;
+            top: 3px;
+            left: 5px;
+          }
+        }
       }
+/*       .md-button {
+        min-width: 78px;
+      } */
     }
 
     .bc-user-name {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 0;
     }
 
@@ -98,7 +112,6 @@ md-backdrop {
     padding: 30px 0 15px 15px;
     font-size: 14px;
   }
-
 
   .md-button {
     &.nav-button {
@@ -119,32 +132,27 @@ md-backdrop {
         }
         font-size: 12px;
       }
-
       &.nav-active {
         pointer-events: none;
-        background-color: #969696;
+        background-color: lighten(#969696, 6);
         color: white;
-
         md-icon {
           color: inherit;
         }
       }
     }
-
     md-icon {
       margin-right: 20px;
     }
-
-/*     &.bc-invalid {
-      &:after {
-        background-color: #d9880f;
-        content: '';
-        height: 20px;
-        margin-top: 8px;
-        position: absolute;
-        right: 20px;
-        width: 2px;
-      }
-    } */
+  }
+}
+.further-links{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 260px;
+  .md-button{
+    font-weight: 400 !important;
+    text-transform: none;
   }
 }

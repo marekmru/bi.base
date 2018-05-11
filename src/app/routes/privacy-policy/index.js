@@ -9,10 +9,11 @@ angular
   });
 
 /** @ngInject */
-/* eslint-disable max-params */
-function PPController() {
+function PPController($rootScope, BIEvents) {
   var vm = this;
-
+  vm.showImprint = function () {
+    $rootScope.$broadcast(BIEvents.SHOW_COMPONENT, {type: 'imprint'});
+  };
   vm.$onInit = function () {
   };
 }

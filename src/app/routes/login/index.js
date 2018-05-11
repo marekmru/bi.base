@@ -22,22 +22,29 @@ function LoginController($state, BIAuthService, BIAuthEnv, $location, $window, $
       $state.go(BIAuthEnv.mainRoute);
     }
   };
-  vm.onOptInClick = function () {
-    var now = new Date();
-    var date = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds()));
+  vm.onOptInClick = function (cookie) {
+    BIAuthService.setPriPolCookie()
+    
     BIAuthService.optIn(
       {
         _id: vm.user._id,
-        opt_in: date
+        opt_in: cookie || BIAuthService.getCookieDate()
       }
     ).then(goMainRoute)
   };
-  var checkProfile = function (profile) { 
+  var checkProfile = function (profile) {
+    const cookie = BIAuthService.isPriPolCookieSet();
     if (profile.opt_in == null) {
-      //vm.user._id = profile._id
-      vm.user = Object.assign(vm.user, profile)
-      vm.optIn = true;
+      vm.user = Object.assign(vm.user, profile);
+      if (typeof cookie === 'string') {
+        vm.onOptInClick(cookie);
+      } else {
+        vm.optIn = true;
+      }
     } else {
+      if (typeof cookie !== 'string') {
+        BIAuthService.setPriPolCookie()
+      }
       goMainRoute()
     }        
   }

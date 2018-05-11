@@ -13,8 +13,9 @@
       <!-- local icons -->
       <span class="biBaseIcons"></span>
 
-      <md-button class="md-icon-button" ng-click="$ctrl.logout()">
-        <md-icon>power_settings_new</md-icon>
+      <md-button class="md-icon-button" ng-click="$ctrl.logout()" alt="Logout">
+        <!-- <md-icon>power_settings_new</md-icon> -->
+        <img width="24px" height="24px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTE5MiAyNzcuNGgxODkuN2wtNDMuNiA0NC43TDM2OCAzNTJsOTYtOTYtOTYtOTYtMzEgMjkuOSA0NC43IDQ0LjdIMTkydjQyLjh6Ii8+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0yNTUuNyA0MjEuM2MtNDQuMSAwLTg1LjUtMTcuMi0xMTYuNy00OC40LTMxLjItMzEuMi00OC4zLTcyLjctNDguMy0xMTYuOSAwLTQ0LjEgMTcuMi04NS43IDQ4LjMtMTE2LjkgMzEuMi0zMS4yIDcyLjYtNDguNCAxMTYuNy00OC40IDQ0IDAgODUuMyAxNy4xIDExNi41IDQ4LjJsMzAuMy0zMC4zYy04LjUtOC40LTE3LjgtMTYuMi0yNy43LTIzLjJDMzM5LjcgNjEgMjk4LjYgNDggMjU1LjcgNDggMTQxLjIgNDggNDggMTQxLjMgNDggMjU2czkzLjIgMjA4IDIwNy43IDIwOGM0Mi45IDAgODQtMTMgMTE5LTM3LjUgMTAtNyAxOS4yLTE0LjcgMjcuNy0yMy4ybC0zMC4yLTMwLjJjLTMxLjEgMzEuMS03Mi41IDQ4LjItMTE2LjUgNDguMnpNNDQ4LjAwNCAyNTYuODQ3bC0uODQ5LS44NDguODQ5LS44NDkuODQ4Ljg0OXoiLz48L3N2Zz4=" title="Logout">   
       </md-button>
     </div>
   </div>
@@ -28,7 +29,11 @@
 
   <md-list class="bc-sidenav-header">
     <md-list-item class="bc-user">
-      <md-icon class="md-avatar">person</md-icon>
+      <div class="avatar-container" layout="row" layout-align="center center">
+        <div flex>
+          <md-icon>person</md-icon>
+        </div>
+      </div>
       <div class="md-list-item-text">
         <p class="bc-user-name">{{::$ctrl.profile.realname}}</p>
         <p class="bc-user-mail">{{::$ctrl.profile.email}}</p>
@@ -40,11 +45,11 @@
   <!-- local navigation -->
   <div id="sidebar" class="biBaseSidebar"></div>
 
-  <div class="further-links">
-    <md-button ui-sref-active="nav-active" md-no-ink class="nav-button" ui-sref="privacy">
+  <div class="further-links" layout="row" layout-align="center center">
+    <md-button class="md-primary" ui-sref-active="nav-active" md-no-ink ui-sref="privacy">
       Datenschutz
     </md-button>
-    <md-button ui-sref-active="nav-active" md-no-ink class="nav-button" ui-sref="imprint">
+    <md-button class="md-primary" ui-sref-active="nav-active" md-no-ink ui-sref="imprint">
       Impressum
     </md-button>
   </div>

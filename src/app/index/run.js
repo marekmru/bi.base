@@ -16,7 +16,7 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
     show403(error);
   });
   var unwatch4 = $rootScope.$on(BIEvents.SHOW_COMPONENT, function (event, data) {
-    showDSE(data);
+    showDSE(data.type);
   });
 
   try {
@@ -69,7 +69,7 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
         bcAlert = undefined;
       });
   };
-  var showDSE = function (error) {
+  var showDSE = function (type) {
     /** @ngInject */
     function DialogController($scope, $mdDialog, BIAuthEnv, $state) {
       $scope.closeDialog = function () {
@@ -77,14 +77,15 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
         $mdDialog.hide();
       }
     }
+    const component = (type === 'dse') ? '<pp-component type="layer"></pp-component>':'<imprint-component type="layer"></imprint-component>';
     var bcAlert = $mdDialog.alert({
       clickOutsideToClose: false,
       escapeToClose: false,
       controller: DialogController,
       template:
-      '<md-dialog aria-label="Datenschutz Dialog" style="padding: 16px;">' +
+      '<md-dialog style="padding: 16px;">' +
       '  <md-dialog-content>'+
-      '  <pp-component type="layer"></pp-component>'+  
+                    component+  
       '  </md-dialog-content>' +
       '  <md-dialog-actions>' +
       '    <md-button ng-click="closeDialog()" class="md-primary">' +
