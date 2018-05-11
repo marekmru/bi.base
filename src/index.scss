@@ -138,4 +138,7 @@ maintenance-mode {
   }
 }
 @import "app/routes/login/style";
+@import "app/routes/privacy-policy/style";
+@import "app/routes/imprint/style";
 @import "app/index/navbar";
+@import "app/index/cookie";

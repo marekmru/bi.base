@@ -1,0 +1,18 @@
+md-dialog{
+    #privacy-policy, #imprint{
+        md-card{
+            box-shadow: none;
+        }
+    }
+}
+#imprint{
+    strong{
+        display: block;
+        margin-top: 12px;
+    }
+    md-card-content{
+        p{
+            max-width: 840px;
+        }
+    }
+}

@@ -27,6 +27,9 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
   vm.toggleMenu = function () {
     $mdSidenav('md-sidenav-left').toggle();
   };
+/*   vm.showDatenschutz = function () {
+    $rootScope.$broadcast(BIEvents.SHOW_COMPONENT, {type: 'dse'});
+  }; */
   vm.goMainRoute = function () {
     if (angular.isDefined(BIAuthEnv.mainRoute.route) && angular.isDefined(BIAuthEnv.mainRoute.param)) {
       $state.go(BIAuthEnv.mainRoute.route, BIAuthEnv.mainRoute.param);
@@ -34,16 +37,16 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
       $state.go(BIAuthEnv.mainRoute);
     }
   };
-  vm.logout = function () {
-    BIAuthService.logout().then(function () {
-      $state.go('login', null, {
-        notify: false,
-        reload: true
-      }).then(function(){
-        // reset state
-        location.reload();
-      });
+  var goLogin = function () {
+    $state.go('login', null, {
+      notify: false,
+      reload: true
+    }).then(function(){
+      location.reload();
     });
+  }
+  vm.logout = function () {
+    BIAuthService.logout().then(goLogin, goLogin);
   };
   vm.onLoad = function (event, value) {
     vm.hideLoader = !value;
@@ -70,8 +73,6 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
           });
       }
     });
-/*    vm.hideLoader = false;
-    vm.vis = true;*/
   };
 
   vm.$onDestroy = function () {
