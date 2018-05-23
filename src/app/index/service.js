@@ -12,7 +12,7 @@ function BIAuthService(BIAuthEnv, $q, $http) {
     profile: url + '/profile',
     user: url + '/user',
     info: url + '/info',
-    optIn: url + '/opt-in',
+    optIn: url + '/optin'
   };
   var _user = {
     isAuthenticated: false
