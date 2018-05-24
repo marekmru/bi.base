@@ -9,10 +9,14 @@ angular
   });
 
 /** @ngInject */
-function PPController($rootScope, BIEvents) {
+function PPController($rootScope, BIEvents, $state) {
   var vm = this;
   vm.showImprint = function () {
-    $rootScope.$broadcast(BIEvents.SHOW_COMPONENT, {type: 'imprint'});
+    if ($state.current.name === 'login') {
+      $rootScope.$broadcast(BIEvents.SHOW_COMPONENT, {type: 'imprint'});
+    } else {
+      $state.go('imprint');
+    }
   };
   vm.$onInit = function () {
   };
