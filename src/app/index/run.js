@@ -43,7 +43,7 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
       $scope.closeDialog = function () {
         $state.go(BIAuthEnv.mainRoute);
         $mdDialog.hide();
-      }
+      };
     }
     var bcAlert = $mdDialog.alert({
       clickOutsideToClose: false,
@@ -51,10 +51,10 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
       controller: DialogController,
       template:
       '<md-dialog aria-label="Error dialog" style="padding: 16px;">' +
-      '  <md-dialog-content>'+
-      '    <p><strong>Fehler 403: Zugriff verweigert</strong></p><p></p>Bitte kontaktieren Sie uns unter:<br>'+
-      '      <a href="mailto:bi-ops@plan-net.com">bi-ops@plan-net.com</a>'+
-      '    </p>'+
+      '  <md-dialog-content>' +
+      '    <p><strong>Fehler 403: Zugriff verweigert</strong></p><p></p>Bitte kontaktieren Sie uns unter:<br>' +
+      '      <a href="mailto:bi-ops@plan-net.com">bi-ops@plan-net.com</a>' +
+      '    </p>' +
       '  </md-dialog-content>' +
       '  <md-dialog-actions>' +
       '    <md-button ng-click="closeDialog()" class="md-primary">' +
@@ -71,21 +71,21 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
   };
   var showDSE = function (type) {
     /** @ngInject */
-    function DialogController($scope, $mdDialog, BIAuthEnv, $state) {
+    function DialogController($scope, $mdDialog) {
       $scope.closeDialog = function () {
-        $state.go('login');
+        // $state.go('login');
         $mdDialog.hide();
-      }
+      };
     }
-    const component = (type === 'dse') ? '<pp-component type="layer"></pp-component>':'<imprint-component type="layer"></imprint-component>';
+    const component = (type === 'dse') ? '<pp-component type="layer"></pp-component>' : '<imprint-component type="layer"></imprint-component>';
     var bcAlert = $mdDialog.alert({
       clickOutsideToClose: false,
       escapeToClose: false,
       controller: DialogController,
       template:
       '<md-dialog style="padding: 16px;">' +
-      '  <md-dialog-content>'+
-                    component+  
+      '  <md-dialog-content>' +
+                    component +
       '  </md-dialog-content>' +
       '  <md-dialog-actions>' +
       '    <md-button ng-click="closeDialog()" class="md-primary">' +
