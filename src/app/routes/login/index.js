@@ -23,14 +23,14 @@ function LoginController($state, BIAuthService, BIAuthEnv, $location, $window, $
     }
   };
   vm.onOptInClick = function (cookie) {
-    BIAuthService.setPriPolCookie()
-    
+    BIAuthService.setPriPolCookie();
+
     BIAuthService.optIn(
       {
         _id: vm.user._id,
         opt_in: cookie || BIAuthService.getCookieDate()
       }
-    ).then(goMainRoute)
+    ).then(goMainRoute);
   };
   var checkProfile = function (profile) {
     const cookie = BIAuthService.isPriPolCookieSet();
@@ -43,13 +43,13 @@ function LoginController($state, BIAuthService, BIAuthEnv, $location, $window, $
       }
     } else {
       if (typeof cookie !== 'string') {
-        BIAuthService.setPriPolCookie()
+        BIAuthService.setPriPolCookie();
       }
-      goMainRoute()
-    }        
-  }
+      goMainRoute();
+    }
+  };
   vm.submit = function () {
-    BIAuthService.login(vm.user).then(function () { 
+    BIAuthService.login(vm.user).then(function () {
       BIAuthService.profile().then(checkProfile);
     },
       function (data) {
@@ -63,7 +63,7 @@ function LoginController($state, BIAuthService, BIAuthEnv, $location, $window, $
       function (err) {
         vm.error = angular.isString(data) ? data : true;
         vm.ready = true;
-    });
+      });
     angular.extend(vm, {
       error: undefined,
       user: {
