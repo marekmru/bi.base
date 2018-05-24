@@ -71,7 +71,7 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
   };
   var showDSE = function (type) {
     /** @ngInject */
-    function DialogController($scope, $mdDialog, BIAuthEnv, $state) {
+    function DialogController($scope, $mdDialog) {
       $scope.closeDialog = function () {
         // $state.go('login');
         $mdDialog.hide();
