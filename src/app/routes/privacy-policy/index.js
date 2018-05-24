@@ -9,10 +9,10 @@ angular
   });
 
 /** @ngInject */
-function PPController($rootScope, BIEvents, $state) {
+function PPController($rootScope, BIEvents, $state, BIAuthEnv) {
   var vm = this;
   vm.showImprint = function () {
-    if ($state.current.name === 'login') {
+    if ($state.current.name === 'login' || BIAuthEnv.showInternalInDialogs) {
       $rootScope.$broadcast(BIEvents.SHOW_COMPONENT, {type: 'imprint'});
     } else {
       $state.go('imprint');
