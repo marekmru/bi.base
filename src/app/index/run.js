@@ -37,11 +37,11 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
         bcAlert = undefined;
       });
   };
-  var show403 = function (error) {
+  var show403 = function () {
     /** @ngInject */
     function DialogController($scope, $mdDialog, BIAuthEnv, $state) {
       $scope.closeDialog = function () {
-        $state.go(BIAuthEnv.mainRoute);
+        $state.go('login');
         $mdDialog.hide();
       };
     }
@@ -49,19 +49,18 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
       clickOutsideToClose: false,
       escapeToClose: false,
       controller: DialogController,
-      template:
-      '<md-dialog aria-label="Error dialog" style="padding: 16px;">' +
-      '  <md-dialog-content>' +
-      '    <p><strong>Fehler 403: Zugriff verweigert</strong></p><p></p>Bitte kontaktieren Sie uns unter:<br>' +
-      '      <a href="mailto:bi-ops@plan-net.com">bi-ops@plan-net.com</a>' +
-      '    </p>' +
-      '  </md-dialog-content>' +
-      '  <md-dialog-actions>' +
-      '    <md-button ng-click="closeDialog()" class="md-primary">' +
-      '      Zur Startseite' +
-      '    </md-button>' +
-      '  </md-dialog-actions>' +
-      '</md-dialog>'
+      template: '<md-dialog aria-label="Error dialog" style="padding: 16px;">' +
+        '  <md-dialog-content>' +
+        '    <p><strong>Fehler 403: Zugriff verweigert</strong></p><p></p>Bitte kontaktieren Sie uns unter:<br>' +
+        '      <a href="mailto:bi-ops@plan-net.com">bi-ops@plan-net.com</a>' +
+        '    </p>' +
+        '  </md-dialog-content>' +
+        '  <md-dialog-actions>' +
+        '    <md-button ng-click="closeDialog()" class="md-primary">' +
+        '      OK' +
+        '    </md-button>' +
+        '  </md-dialog-actions>' +
+        '</md-dialog>'
     });
     $mdDialog
       .show(bcAlert)
@@ -82,17 +81,16 @@ function run(BIAuthEnv, $injector, $rootScope, BIEvents, $mdDialog, $window) {
       clickOutsideToClose: false,
       escapeToClose: false,
       controller: DialogController,
-      template:
-      '<md-dialog style="padding: 16px;">' +
-      '  <md-dialog-content>' +
-                    component +
-      '  </md-dialog-content>' +
-      '  <md-dialog-actions>' +
-      '    <md-button ng-click="closeDialog()" class="md-primary">' +
-      '      Schließen' +
-      '    </md-button>' +
-      '  </md-dialog-actions>' +
-      '</md-dialog>'
+      template: '<md-dialog style="padding: 16px;">' +
+        '  <md-dialog-content>' +
+        component +
+        '  </md-dialog-content>' +
+        '  <md-dialog-actions>' +
+        '    <md-button ng-click="closeDialog()" class="md-primary">' +
+        '      Schließen' +
+        '    </md-button>' +
+        '  </md-dialog-actions>' +
+        '</md-dialog>'
     });
     $mdDialog
       .show(bcAlert)
