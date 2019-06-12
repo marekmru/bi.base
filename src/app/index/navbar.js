@@ -25,15 +25,15 @@ function NavbarController($mdSidenav, $transitions, BIAuthEnv, BIAuthService, $s
     }
   };
   var goLogin = function () {
-    $state.go('login', null, {
-      notify: false,
-      reload: true
-    }).then(function(){
-      location.reload();
-    });
+    //$state.go('login')
+    //window.setTimeout(location.reload, 333)
   }
   vm.logout = function () {
-    BIAuthService.logout().then(goLogin, goLogin);
+    BIAuthService.logout()
+    $state.go('login')
+    window.setTimeout(function(){
+      window.location.reload()
+    }, 250)
   };
   vm.onLoad = function (event, value) {
     vm.hideLoader = !value;
