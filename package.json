@@ -28,7 +28,7 @@
     "gulp-sass": "^3.1.0",
     "browser-sync": "^2.18.8",
     "browser-sync-spa": "^1.0.3",
-    "karma": "^1.4.1",
+    "karma": "^6.3.14",
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-junit-reporter": "^1.2.0",
